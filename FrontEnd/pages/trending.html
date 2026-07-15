@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Trending</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="discovery-page">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect y="1" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="6" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="11" width="22" height="2" rx="1" fill="#fff" />
+        </svg>
+      </button>
+      <a class="brand" href="../index.html" aria-label="CineJunction Home">
+        <span class="logo">CineJunction</span>
+      </a>
+      <nav id="site-navigation" class="site-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="movies.html">Movies</a></li>
+          <li><a class="nav-link" href="tv-shows.html">TV Shows</a></li>
+          <li><a class="nav-link" href="anime.html">Anime</a></li>
+          <li><a class="nav-link" href="#">Community</a></li>
+          <li><a class="nav-link" href="#">Lists</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <label class="search-shell" aria-label="Search site">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Search titles, people, moods..." aria-label="Search site" />
+        </label>
+        <button class="btn btn-icon" aria-label="Notifications">⎋</button>
+        <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="discovery-main" id="main" tabindex="-1">
+    <section class="discovery-hero" aria-labelledby="trending-title">
+      <div class="container discovery-hero__content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span>/</span>
+          <span>Trending</span>
+        </nav>
+        <div class="discovery-hero__copy">
+          <p class="eyebrow">Trending Now</p>
+          <h1 class="hero-title" id="trending-title">What the community is watching right now.</h1>
+          <p class="body-text">A premium feed of the titles gaining momentum among curious viewers and dedicated cinephiles.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container discovery-layout">
+      <section class="discovery-content discovery-content--wide" aria-label="Trending catalogue">
+        <div class="movie-row-section">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">01</p>
+              <h2 class="section-title">Trending Today</h2>
+            </div>
+            <a class="section-link" href="#">See All</a>
+          </div>
+          <div class="card-row">
+            <article class="movie-card discovery-card">
+              <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Glass Meridian poster" /></div>
+              <div class="movie-card__body">
+                <div class="movie-card__meta"><span class="meta-pill">IMDb 8.3</span><span class="meta-pill">CJ 8.9</span></div>
+                <h3 class="movie-title">Glass Meridian</h3>
+                <p class="body-text">Mystery • 2026 • 1h 56m</p>
+              </div>
+            </article>
+            <article class="movie-card discovery-card">
+              <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Northbound Light poster" /></div>
+              <div class="movie-card__body">
+                <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">CJ 8.7</span></div>
+                <h3 class="movie-title">Northbound Light</h3>
+                <p class="body-text">Adventure • 2025 • 1h 48m</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="CineJunction Home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="body-text">Premium discovery, intelligent curation, and cinematic ease.</p>
+      </div>
+      <div>
+        <h3 class="movie-title">Quick Links</h3>
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Social</h3>
+        <ul class="footer-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Letterboxd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Contact</h3>
+        <ul class="footer-list">
+          <li><a href="#">hello@cinejunction.com</a></li>
+          <li><a href="#">+1 (415) 555-0188</a></li>
+          <li><a href="#">© 2026 CineJunction</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/movies.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>

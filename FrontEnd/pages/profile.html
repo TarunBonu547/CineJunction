@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Profile</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect y="1" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="6" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="11" width="22" height="2" rx="1" fill="#fff" />
+        </svg>
+      </button>
+      <a class="brand" href="../index.html" aria-label="CineJunction Home">
+        <span class="logo">CineJunction</span>
+      </a>
+      <nav id="site-navigation" class="site-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="movies.html">Movies</a></li>
+          <li><a class="nav-link" href="tv-shows.html">TV Shows</a></li>
+          <li><a class="nav-link" href="anime.html">Anime</a></li>
+          <li><a class="nav-link" href="trending.html">Trending</a></li>
+          <li><a class="nav-link" href="community.html">Community</a></li>
+          <li><a class="nav-link is-active" href="profile.html">Profile</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="search-shell" aria-label="Search site">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Search titles, people, moods..." aria-label="Search site" />
+          <div class="search-suggestions" aria-label="Search suggestions"></div>
+        </div>
+        <div class="profile-dropdown" data-profile-toggle>
+          <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
+          <div class="profile-menu" role="menu">
+            <a href="profile.html" role="menuitem">Profile</a>
+            <a href="watchlist.html" role="menuitem">Watchlist</a>
+            <a href="settings.html" role="menuitem">Settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell container content-section" tabindex="-1">
+    <section class="info-card" aria-labelledby="profile-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Profile</p>
+          <h1 class="section-title" id="profile-title">Your cinematic identity</h1>
+        </div>
+        <a class="btn btn-outline" href="watchlist.html">Open Watchlist</a>
+      </div>
+      <p class="body-text">This view is ready for a connected account experience with saved preferences, list history, and recommendations from your activity.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="CineJunction Home"><span class="logo">CineJunction</span></a>
+        <p class="body-text">Premium discovery, intelligent curation, and cinematic ease.</p>
+      </div>
+      <div>
+        <h3 class="movie-title">Quick Links</h3>
+        <ul class="footer-list">
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="watchlist.html">Watchlist</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Social</h3>
+        <ul class="footer-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Letterboxd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Contact</h3>
+        <ul class="footer-list">
+          <li><a href="#">hello@cinejunction.com</a></li>
+          <li><a href="#">+1 (415) 555-0188</a></li>
+          <li><a href="#">© 2026 CineJunction</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+</body>
+</html>

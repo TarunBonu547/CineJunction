@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Login</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell" role="main">
+    <section class="auth-hero" aria-labelledby="login-hero-title">
+      <div class="auth-hero__content">
+        <a class="brand" href="../index.html" aria-label="Return to CineJunction home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="eyebrow">Premium access</p>
+        <h1 class="hero-title" id="login-hero-title">The next great film begins with a single sign-in.</h1>
+        <p class="body-text">Continue your curated journey through refined stories, cinematic discoveries, and thoughtful recommendations.</p>
+        <div class="auth-quote">
+          <p>“Every frame deserves your attention.”</p>
+          <span>— CineJunction</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="login-title">
+      <div class="auth-card__inner">
+        <a class="brand brand--compact" href="../index.html" aria-label="Return to CineJunction home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="eyebrow">Login</p>
+        <h2 class="section-title" id="login-title">Welcome back</h2>
+        <p class="body-text">Sign in to resume your premium watchlist and recommendations.</p>
+
+        <form class="auth-form" novalidate data-auth-form="login">
+          <div class="field-group">
+            <label class="input-label" for="login-email">Email</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="m4 7 8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="login-email" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label" for="login-password">Password</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M8 9V7a4 4 0 1 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="login-password" name="password" type="password" placeholder="Enter your password" required />
+              <button class="btn btn-icon pwd-toggle" type="button" data-toggle-password="login-password" aria-label="Show password">◌</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox-row">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a class="inline-link" href="forgot-password.html">Forgot password?</a>
+          </div>
+
+          <p class="form-message" aria-live="polite"></p>
+
+          <button class="btn btn-primary auth-submit" type="submit">Sign In</button>
+
+          <div class="divider" role="separator"><span>or continue with</span></div>
+
+          <div class="social-grid">
+            <a class="btn btn-outline social-btn" href="#">Continue with Google</a>
+            <a class="btn btn-outline social-btn" href="#">Continue with GitHub</a>
+          </div>
+        </form>
+
+        <p class="auth-footer">New to CineJunction? <a class="inline-link" href="register.html">Create account</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>

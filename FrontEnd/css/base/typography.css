@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap");
+
+/* ==========================================
+   Shikamaru (Logo)
+========================================== */
+
+@font-face {
+    font-family: "Shikamaru";
+    src: url("../../assests/fonts/shikamaru/Shikamaru.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* ==========================================
+   Storm Gust (Display)
+========================================== */
+
+@font-face {
+    font-family: "Storm Gust";
+    src: url("../../assests/fonts/storm-gust/Storm Gust.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* ==========================================
+   Boldonse (Movie Titles)
+========================================== */
+
+@font-face {
+    font-family: "Boldonse";
+    src: url("../../assests/fonts/boldonse/Boldonse-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* ==========================================
+   Outfit Variable Font
+========================================== */
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../../assests/fonts/outfit/Outfit-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+:root {
+    --font-logo: "Shikamaru", cursive;
+    --font-display: "Storm Gust", serif;
+    --font-title: "Boldonse", serif;
+    --font-body: "Outfit", sans-serif;
+    --font-ui: "Zen Kaku Gothic New", "Outfit", sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: var(--cj-bg);
+    line-height: var(--lh-normal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: rgba(229, 9, 20, 0.35);
+    color: var(--text-primary);
+}
+
+.logo {
+    font-family: var(--font-logo);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+}
+
+.hero-title,
+.section-title {
+    font-family: var(--font-display);
+}
+
+.movie-title {
+    font-family: var(--font-title);
+}
+
+.body-text {
+    font-family: var(--font-body);
+}
+
+.section-label,
+.eyebrow,
+.meta-pill,
+.footer-list a,
+.nav-link,
+.search-shell input,
+.btn {
+    font-family: var(--font-ui);
+}

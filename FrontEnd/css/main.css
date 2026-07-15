@@ -1,0 +1,56 @@
+/* ==========================================
+   CineJunction Design System
+   Main Stylesheet
+========================================== */
+
+/* ===========================
+   Base
+=========================== */
+
+@import url("./base/reset.css");
+@import url("./base/variables.css");
+@import url("./base/typography.css");
+
+/* ===========================
+   Layout
+=========================== */
+
+@import url("./layout/container.css");
+@import url("./layout/grid.css");
+@import url("./layout/header.css");
+@import url("./layout/footer.css");
+
+/* ===========================
+   Components
+=========================== */
+
+@import url("./components/buttons.css");
+@import url("./components/cards.css");
+@import url("./components/navbar.css");
+@import url("./components/movie-card.css");
+@import url("./components/site-shell.css");
+
+/* ===========================
+   Pages
+=========================== */
+
+@import url("./pages/home.css");
+@import url("./pages/auth.css");
+@import url("./pages/discovery.css");
+@import url("./pages/movie-details.css");
+
+/* ===========================
+   Theme
+=========================== */
+
+@import url("./themes/dark.css");
+
+/* ===========================
+   Utilities
+=========================== */
+
+@import url("./utilities/helpers.css");
+@import url("./utilities/animations.css");
+
+/* *Temporary */
+@import url("./pages/typography-test.css");

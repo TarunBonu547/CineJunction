@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Register</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell" role="main">
+    <section class="auth-hero" aria-labelledby="register-hero-title">
+      <div class="auth-hero__content">
+        <a class="brand" href="../index.html" aria-label="Return to CineJunction home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="eyebrow">Join the platform</p>
+        <h1 class="hero-title" id="register-hero-title">Create your own cinematic profile.</h1>
+        <p class="body-text">Build your watchlist, discover elegant recommendations, and stay close to the stories that matter to you.</p>
+        <div class="auth-quote">
+          <p>“Every taste deserves a tailored view.”</p>
+          <span>— CineJunction</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="register-title">
+      <div class="auth-card__inner">
+        <a class="brand brand--compact" href="../index.html" aria-label="Return to CineJunction home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="eyebrow">Register</p>
+        <h2 class="section-title" id="register-title">Create account</h2>
+        <p class="body-text">Join the premium experience with a thoughtful, cinematic profile.</p>
+
+        <form class="auth-form" novalidate data-auth-form="register">
+          <div class="field-group">
+            <label class="input-label" for="register-name">Full name</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M5 19a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="register-name" name="name" type="text" placeholder="Aiko Tanaka" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label" for="register-username">Username</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">@</span>
+              <input id="register-username" name="username" type="text" placeholder="aiko_vision" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label" for="register-email">Email</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="m4 7 8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="register-email" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label" for="register-password">Password</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M8 9V7a4 4 0 1 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="register-password" name="password" type="password" placeholder="Create a strong password" required />
+              <button class="btn btn-icon pwd-toggle" type="button" data-toggle-password="register-password" aria-label="Show password">◌</button>
+            </div>
+            <div class="strength-meter" data-strength-meter>
+              <div class="strength-meter__bar" aria-hidden="true"></div>
+              <span class="strength-meter__label">Password strength: <strong data-strength-text>Weak</strong></span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label" for="register-confirm">Confirm password</label>
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M8 9V7a4 4 0 1 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>
+              </span>
+              <input id="register-confirm" name="confirm" type="password" placeholder="Repeat your password" required />
+              <button class="btn btn-icon pwd-toggle" type="button" data-toggle-password="register-confirm" aria-label="Show password">◌</button>
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" required />
+            <span>I agree to the Terms and Conditions.</span>
+          </label>
+
+          <p class="form-message" aria-live="polite"></p>
+
+          <button class="btn btn-primary auth-submit" type="submit">Create account</button>
+
+          <div class="divider" role="separator"><span>or sign up with</span></div>
+
+          <div class="social-grid">
+            <a class="btn btn-outline social-btn" href="#">Google</a>
+            <a class="btn btn-outline social-btn" href="#">GitHub</a>
+          </div>
+        </form>
+
+        <p class="auth-footer">Already have an account? <a class="inline-link" href="login.html">Sign in</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>

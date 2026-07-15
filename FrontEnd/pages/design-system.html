@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineJunction | Design System</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="docs-shell">
+        <header class="page-header">
+            <div class="brand-group">
+                <p class="section-label">Design System</p>
+                <h1 class="logo">CineJunction</h1>
+            </div>
+            <nav class="page-nav" aria-label="Design system sections">
+                <a href="#colors">Colors</a>
+                <a href="#spacing">Spacing</a>
+                <a href="#typography">Typography</a>
+                <a href="#components">Components</a>
+                <a href="#tokens">Tokens</a>
+            </nav>
+        </header>
+
+        <main class="docs-page">
+            <section class="hero-card" id="overview">
+                <div class="hero-copy">
+                    <p class="eyebrow">CineJunction Design System</p>
+                    <h2 class="hero-title">A scalable, premium UI language for streaming experiences.</h2>
+                    <p class="body-text">
+                        This system unifies motion, spacing, typography, components, and accessibility into one consistent source of truth for every screen in the platform.
+                    </p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-pill"><span>Foundation</span><strong>Modern dark</strong></div>
+                    <div class="stat-pill"><span>Accessibility</span><strong>WCAG ready</strong></div>
+                    <div class="stat-pill"><span>Scale</span><strong>Responsive by default</strong></div>
+                </div>
+            </section>
+
+            <section class="docs-section" id="colors">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">01</p>
+                        <h3 class="section-title">Color System</h3>
+                    </div>
+                    <p class="section-description">Core palette built around cinematic contrast, premium surfaces, and accessible foregrounds.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid four-up">
+                    <article class="token-card">
+                        <div class="swatch swatch-primary"></div>
+                        <h4>Primary</h4>
+                        <p>#E50914</p>
+                        <p>RGB 229 9 20</p>
+                        <p>HSL 356 86% 47%</p>
+                        <span class="usage-pill">CTA, highlights</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-background"></div>
+                        <h4>Background</h4>
+                        <p>#0F0F10</p>
+                        <p>RGB 15 15 16</p>
+                        <p>HSL 240 8% 6%</p>
+                        <span class="usage-pill">Page background</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-surface"></div>
+                        <h4>Surface</h4>
+                        <p>#18181B</p>
+                        <p>RGB 24 24 27</p>
+                        <p>HSL 240 6% 10%</p>
+                        <span class="usage-pill">Cards, panels</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-text"></div>
+                        <h4>Text</h4>
+                        <p>#FFFFFF</p>
+                        <p>RGB 255 255 255</p>
+                        <p>HSL 0 0% 100%</p>
+                        <span class="usage-pill">Primary content</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-secondary-text"></div>
+                        <h4>Secondary Text</h4>
+                        <p>#A1A1AA</p>
+                        <p>RGB 161 161 170</p>
+                        <p>HSL 240 5% 66%</p>
+                        <span class="usage-pill">Metadata, captions</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-success"></div>
+                        <h4>Success</h4>
+                        <p>#22C55E</p>
+                        <p>RGB 34 197 94</p>
+                        <p>HSL 142 71% 45%</p>
+                        <span class="usage-pill">Saved, online</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-warning"></div>
+                        <h4>Warning</h4>
+                        <p>#F59E0B</p>
+                        <p>RGB 245 158 11</p>
+                        <p>HSL 38 92% 50%</p>
+                        <span class="usage-pill">Attention</span>
+                    </article>
+                    <article class="token-card">
+                        <div class="swatch swatch-error"></div>
+                        <h4>Error</h4>
+                        <p>#EF4444</p>
+                        <p>RGB 239 68 68</p>
+                        <p>HSL 0 84% 60%</p>
+                        <span class="usage-pill">Failure states</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section" id="spacing">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">02</p>
+                        <h3 class="section-title">Spacing System</h3>
+                    </div>
+                    <p class="section-description">A rhythm-based spacing scale designed for dense content and airy composition.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid four-up">
+                    <article class="token-card spacing-card"><div class="spacing-preview size-4"></div><h4>4px</h4><p>Micro adjustments</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-8"></div><h4>8px</h4><p>Compact gaps</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-12"></div><h4>12px</h4><p>Input and chip gaps</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-16"></div><h4>16px</h4><p>Standard padding</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-20"></div><h4>20px</h4><p>Section support</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-24"></div><h4>24px</h4><p>Card padding</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-32"></div><h4>32px</h4><p>Component separation</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-40"></div><h4>40px</h4><p>Large section gaps</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-48"></div><h4>48px</h4><p>Hero spacing</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-64"></div><h4>64px</h4><p>Content blocks</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-80"></div><h4>80px</h4><p>Large page rhythm</p></article>
+                    <article class="token-card spacing-card"><div class="spacing-preview size-96"></div><h4>96px</h4><p>Hero and landing scale</p></article>
+                </div>
+            </section>
+
+            <section class="docs-section" id="typography">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">03</p>
+                        <h3 class="section-title">Typography Scale</h3>
+                    </div>
+                    <p class="section-description">Type is used with deliberate hierarchy to preserve clarity and drama.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <h4 class="type-sample display-sample">Display</h4>
+                        <p class="type-meta">72px / 400 / 2px / 1.05</p>
+                        <p class="type-usage">Hero headlines and cinematic moments.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample hero-sample">Hero</h4>
+                        <p class="type-meta">56px / 400 / 1px / 1.1</p>
+                        <p class="type-usage">Landing sections and featured content.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample section-sample">Section</h4>
+                        <p class="type-meta">32px / 600 / 0.2px / 1.2</p>
+                        <p class="type-usage">Section titles and group headings.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample card-sample">Card Title</h4>
+                        <p class="type-meta">20px / 600 / 0px / 1.3</p>
+                        <p class="type-usage">Content cards and item headers.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample movie-sample">Movie Title</h4>
+                        <p class="type-meta">24px / 700 / 0.5px / 1.25</p>
+                        <p class="type-usage">Featured movies and posters.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample body-sample">Body</h4>
+                        <p class="type-meta">18px / 400 / 0px / 1.7</p>
+                        <p class="type-usage">Descriptions and summaries.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample ui-sample">UI</h4>
+                        <p class="type-meta">16px / 500 / 0px / 1.5</p>
+                        <p class="type-usage">Buttons, labels, nav, forms.</p>
+                    </article>
+                    <article class="token-card">
+                        <h4 class="type-sample caption-sample">Caption</h4>
+                        <p class="type-meta">13px / 400 / 0.2px / 1.5</p>
+                        <p class="type-usage">Metadata, timestamps, supporting text.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">04</p>
+                        <h3 class="section-title">Radius & Shadows</h3>
+                    </div>
+                    <p class="section-description">Soft corners and depth support a premium cinematic UI.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid three-up">
+                    <article class="token-card">
+                        <div class="radius-box radius-4"></div>
+                        <h4>4px</h4>
+                        <p>Subtle inline elements</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-8"></div>
+                        <h4>8px</h4>
+                        <p>Buttons and chips</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-12"></div>
+                        <h4>12px</h4>
+                        <p>Card corners</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-16"></div>
+                        <h4>16px</h4>
+                        <p>Panels and panels</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-18"></div>
+                        <h4>18px</h4>
+                        <p>Primary cards</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-24"></div>
+                        <h4>24px</h4>
+                        <p>Hero surfaces</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="radius-box radius-999"></div>
+                        <h4>999px</h4>
+                        <p>Pills, chips, buttons</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="shadow-preview shadow-sm"></div>
+                        <h4>Small</h4><p>Depth for small components</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="shadow-preview shadow-md"></div>
+                        <h4>Medium</h4><p>Standard card elevation</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="shadow-preview shadow-lg"></div>
+                        <h4>Large</h4><p>Hero and modal surfaces</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section" id="components">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">05</p>
+                        <h3 class="section-title">Button System</h3>
+                    </div>
+                    <p class="section-description">Buttons are designed with clear hierarchy, motion, and accessible focus states.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid three-up">
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-secondary">Secondary</button>
+                        </div>
+                        <p class="type-usage">Primary and secondary actions for critical decisions.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-ghost">Ghost</button>
+                            <button class="btn btn-outline">Outlined</button>
+                        </div>
+                        <p class="type-usage">Less dominant actions and inline controls.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-danger">Danger</button>
+                            <button class="btn btn-success">Success</button>
+                        </div>
+                        <p class="type-usage">Destructive and positive feedback states.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-icon" aria-label="Favorite">♡</button>
+                            <button class="btn btn-floating">+</button>
+                        </div>
+                        <p class="type-usage">Icon buttons for compact actions and floating entry points.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-primary is-loading">Loading</button>
+                            <button class="btn btn-primary" disabled>Disabled</button>
+                        </div>
+                        <p class="type-usage">Loading and disabled states maintain clarity without ambiguity.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="button-row">
+                            <button class="btn btn-primary">Hover</button>
+                            <button class="btn btn-primary is-active">Active</button>
+                        </div>
+                        <p class="type-usage">Motion and state behavior remain consistent across the system.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">06</p>
+                        <h3 class="section-title">Inputs & Form Controls</h3>
+                    </div>
+                    <p class="section-description">Inputs stay focused, legible, and accessible across search, sign-in, and filtering experiences.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <label class="input-label" for="search">Search</label>
+                        <div class="input-shell"><span>⌕</span><input id="search" type="search" placeholder="Search movies, actors and directors..."></div>
+                        <div class="input-shell"><input type="text" placeholder="Text field"></div>
+                        <div class="input-shell"><input type="email" placeholder="Email"></div>
+                        <div class="input-shell"><input type="password" placeholder="Password"></div>
+                    </article>
+                    <article class="token-card">
+                        <label class="input-label">Dropdown</label>
+                        <select class="input-shell select-shell">
+                            <option>Newest</option>
+                            <option>Popular</option>
+                            <option>Trending</option>
+                        </select>
+                        <div class="chip-row">
+                            <span class="chip chip-selected">Action</span>
+                            <span class="chip">Drama</span>
+                            <span class="chip chip-disabled">Sci-Fi</span>
+                        </div>
+                        <div class="form-row">
+                            <label class="check-row"><input type="checkbox" checked> Remember me</label>
+                            <label class="check-row"><input type="radio" name="choice" checked> Standard</label>
+                        </div>
+                        <label class="toggle-row"><input type="checkbox" class="toggle" checked><span></span>Notifications</label>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">07</p>
+                        <h3 class="section-title">Navigation System</h3>
+                    </div>
+                    <p class="section-description">Navigation patterns adapt to desktop, mobile, and content-rich flows.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <nav class="nav-demo">
+                            <a href="#">Home</a>
+                            <a href="#">Movies</a>
+                            <a href="#">TV</a>
+                            <a href="#">Community</a>
+                            <a href="#">Profile</a>
+                        </nav>
+                        <div class="tabs-row">
+                            <a class="tab tab-active" href="#">Overview</a>
+                            <a class="tab" href="#">Cast</a>
+                            <a class="tab" href="#">Reviews</a>
+                        </div>
+                    </article>
+                    <article class="token-card">
+                        <div class="breadcrumb">Home / Movies / Interstellar</div>
+                        <div class="pagination"><span>←</span><a href="#" class="page active">1</a><a href="#" class="page">2</a><a href="#" class="page">3</a><span>→</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">08</p>
+                        <h3 class="section-title">Card System</h3>
+                    </div>
+                    <p class="section-description">Cards package content, imagery, metadata, and actions in a consistent layout.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid three-up">
+                    <article class="token-card card-demo">
+                        <div class="poster"></div>
+                        <h4>Movie Card</h4>
+                        <p>Interstellar</p>
+                        <span class="usage-pill">Featured film</span>
+                    </article>
+                    <article class="token-card card-demo">
+                        <div class="poster poster-alt"></div>
+                        <h4>TV Show Card</h4>
+                        <p>Stranger Things</p>
+                        <span class="usage-pill">Continue watching</span>
+                    </article>
+                    <article class="token-card card-demo">
+                        <div class="avatar avatar-medium"></div>
+                        <h4>Actor Card</h4>
+                        <p>Matthew McConaughey</p>
+                        <span class="usage-pill">Cast spotlight</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">09</p>
+                        <h3 class="section-title">Badges, Tags & Chips</h3>
+                    </div>
+                    <p class="section-description">Compact status and category elements provide instant recognition.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <div class="badge-row">
+                            <span class="badge badge-rating">8.7 IMDb</span>
+                            <span class="badge badge-premium">Premium</span>
+                            <span class="badge badge-new">NEW</span>
+                            <span class="badge badge-top">Top Rated</span>
+                            <span class="badge badge-trending">Trending</span>
+                        </div>
+                    </article>
+                    <article class="token-card">
+                        <div class="chip-row">
+                            <span class="chip chip-selected">Action</span>
+                            <span class="chip">Sci-Fi</span>
+                            <span class="chip">Drama</span>
+                            <span class="chip chip-disabled">Horror</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">10</p>
+                        <h3 class="section-title">Iconography</h3>
+                    </div>
+                    <p class="section-description">Icons use simple geometry, clear contrast, and polished interactions.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <div class="icon-row">
+                            <span class="icon-sample">▶</span>
+                            <span class="icon-sample">♡</span>
+                            <span class="icon-sample">⬇</span>
+                            <span class="icon-sample">⚙</span>
+                        </div>
+                        <p class="type-usage">Sizes: 16px, 20px, 24px. Stroke width: 1.5px. Spacing: 8px between elements.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="icon-state-row">
+                            <span class="icon-state icon-default">▶</span>
+                            <span class="icon-state icon-hover">♡</span>
+                            <span class="icon-state icon-active">★</span>
+                            <span class="icon-state icon-disabled">⚙</span>
+                        </div>
+                        <p class="type-usage">Hover, active, and disabled states remain distinguishable and consistent.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">11</p>
+                        <h3 class="section-title">Modals, Alerts & Toasts</h3>
+                    </div>
+                    <p class="section-description">Feedback surfaces stay calm, focused, and unobtrusive.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid three-up">
+                    <article class="token-card">
+                        <div class="modal-surface">
+                            <h4>Confirmation Modal</h4>
+                            <p>Save this movie to your watchlist?</p>
+                            <div class="button-row"><button class="btn btn-primary">Confirm</button><button class="btn btn-ghost">Cancel</button></div>
+                        </div>
+                    </article>
+                    <article class="token-card">
+                        <div class="alert alert-success">Saved successfully</div>
+                        <div class="alert alert-warning">Connection is slow</div>
+                        <div class="alert alert-error">Something went wrong</div>
+                        <div class="alert alert-info">New episodes available</div>
+                    </article>
+                    <article class="token-card">
+                        <div class="toast toast-success">Bookmark saved</div>
+                        <div class="toast toast-error">Download failed</div>
+                        <div class="toast toast-info">Download complete</div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">12</p>
+                        <h3 class="section-title">Loaders & Empty States</h3>
+                    </div>
+                    <p class="section-description">Loading and empty experiences should feel intentional and graceful.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <div class="loader"></div>
+                        <p class="type-usage">Spinner, skeleton card, button loader, and movie loader patterns follow the same motion language.</p>
+                    </article>
+                    <article class="token-card">
+                        <div class="empty-state">
+                            <h4>No movies found</h4>
+                            <p>Try a wider search or browse a different genre.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="docs-section" id="tokens">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">13</p>
+                        <h3 class="section-title">Design Tokens & Developer Notes</h3>
+                    </div>
+                    <p class="section-description">These tokens and conventions should become the single source of truth for future UI work.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="card-grid two-up">
+                    <article class="token-card">
+                        <h4>Core tokens</h4>
+                        <ul class="notes-list">
+                            <li>Colors: primary, background, surface, text, secondary, accent states</li>
+                            <li>Typography: logo, display, hero, title, UI, body, caption</li>
+                            <li>Spacing: 4px–96px scale</li>
+                            <li>Radius: 4px, 8px, 12px, 16px, 18px, 24px, 999px</li>
+                            <li>Shadows: small, medium, large, hover, hero</li>
+                        </ul>
+                    </article>
+                    <article class="token-card">
+                        <h4>Implementation notes</h4>
+                        <ul class="notes-list">
+                            <li>Use semantic HTML and ARIA labels in every component.</li>
+                            <li>Keep keyboard navigation and visible focus states intact.</li>
+                            <li>Prefer variables over hard-coded values for scalable theming.</li>
+                            <li>Test across 480px, 768px, 1280px, and 1440px breakpoints.</li>
+                            <li>Maintain cinematic contrast while preserving readability.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

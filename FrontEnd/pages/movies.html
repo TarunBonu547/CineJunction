@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Movies</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="discovery-page">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect y="1" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="6" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="11" width="22" height="2" rx="1" fill="#fff" />
+        </svg>
+      </button>
+      <a class="brand" href="../index.html" aria-label="CineJunction Home">
+        <span class="logo">CineJunction</span>
+      </a>
+      <nav id="site-navigation" class="site-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link is-active" href="movies.html">Movies</a></li>
+          <li><a class="nav-link" href="tv-shows.html">TV Shows</a></li>
+          <li><a class="nav-link" href="anime.html">Anime</a></li>
+          <li><a class="nav-link" href="#">Community</a></li>
+          <li><a class="nav-link" href="#">Lists</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <label class="search-shell" aria-label="Search site">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Search titles, people, moods..." aria-label="Search site" />
+        </label>
+        <button class="btn btn-icon" aria-label="Notifications">⎋</button>
+        <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="discovery-main" id="main" tabindex="-1">
+    <section class="discovery-hero" aria-labelledby="movies-title">
+      <div class="container discovery-hero__content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span>/</span>
+          <span>Movies</span>
+        </nav>
+        <div class="discovery-hero__copy">
+          <p class="eyebrow">Movie Discovery</p>
+          <h1 class="hero-title" id="movies-title">Browse the cinematic collection.</h1>
+          <p class="body-text">Explore the curated catalogue with filters, sorting, and intelligent discovery designed for premium viewing.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container discovery-layout">
+      <aside class="filter-panel" aria-label="Filter controls">
+        <div class="filter-panel__header">
+          <h2 class="section-title">Filters</h2>
+          <button class="btn btn-ghost" type="button">Reset</button>
+        </div>
+        <div class="filter-group">
+          <h3 class="movie-title">Genre</h3>
+          <div class="chip-row">
+            <button class="chip is-active" type="button">Drama</button>
+            <button class="chip" type="button">Thriller</button>
+            <button class="chip" type="button">Sci-Fi</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="movie-title">Language</h3>
+          <div class="chip-row">
+            <button class="chip" type="button">English</button>
+            <button class="chip" type="button">Japanese</button>
+            <button class="chip" type="button">French</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="movie-title">Rating</h3>
+          <div class="chip-row">
+            <button class="chip" type="button">8+</button>
+            <button class="chip" type="button">7+</button>
+            <button class="chip" type="button">6+</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="movie-title">Availability</h3>
+          <div class="chip-row">
+            <button class="chip" type="button">Streaming</button>
+            <button class="chip" type="button">Rent</button>
+            <button class="chip" type="button">Theater</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="discovery-content" aria-label="Movie catalogue">
+        <div class="discovery-toolbar">
+          <label class="input-shell discovery-search" for="movie-search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="movie-search" type="search" placeholder="Search this catalogue" aria-label="Search movies" />
+          </label>
+          <label class="sort-shell">
+            <span class="input-label">Sort</span>
+            <select class="input-shell">
+              <option>Trending</option>
+              <option>Popularity</option>
+              <option>IMDb Rating</option>
+              <option>CineJunction Score</option>
+              <option>Release Date</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="movie-grid" data-movie-grid>
+          <article class="movie-card discovery-card">
+            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Aether Bloom poster" /></div>
+            <div class="movie-card__body">
+              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.4</span><span class="meta-pill">CJ 9.1</span></div>
+              <h3 class="movie-title">Aether Bloom</h3>
+              <p class="body-text">Fantasy • 2026 • 2h 06m</p>
+              <div class="card-actions">
+                <button class="btn btn-outline" type="button">Bookmark</button>
+                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card discovery-card">
+            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Midnight Tides poster" /></div>
+            <div class="movie-card__body">
+              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">CJ 8.8</span></div>
+              <h3 class="movie-title">Midnight Tides</h3>
+              <p class="body-text">Thriller • 2025 • 1h 50m</p>
+              <div class="card-actions">
+                <button class="btn btn-outline" type="button">Bookmark</button>
+                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card discovery-card">
+            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Velvet Silence poster" /></div>
+            <div class="movie-card__body">
+              <div class="movie-card__meta"><span class="meta-pill">IMDb 7.9</span><span class="meta-pill">CJ 8.3</span></div>
+              <h3 class="movie-title">Velvet Silence</h3>
+              <p class="body-text">Drama • 2024 • 1h 58m</p>
+              <div class="card-actions">
+                <button class="btn btn-outline" type="button">Bookmark</button>
+                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card discovery-card">
+            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="The Last Horizon poster" /></div>
+            <div class="movie-card__body">
+              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.7</span><span class="meta-pill">CJ 9.4</span></div>
+              <h3 class="movie-title">The Last Horizon</h3>
+              <p class="body-text">Sci-Fi • 2026 • 2h 12m</p>
+              <div class="card-actions">
+                <button class="btn btn-outline" type="button">Bookmark</button>
+                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pagination" aria-label="Pagination">
+          <button class="btn btn-ghost" type="button">Previous</button>
+          <div class="pagination__pages" aria-label="Page numbers">
+            <button class="btn btn-primary" type="button">1</button>
+            <button class="btn btn-outline" type="button">2</button>
+            <button class="btn btn-outline" type="button">3</button>
+          </div>
+          <button class="btn btn-ghost" type="button">Next</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="CineJunction Home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="body-text">Premium discovery, intelligent curation, and cinematic ease.</p>
+      </div>
+      <div>
+        <h3 class="movie-title">Quick Links</h3>
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Social</h3>
+        <ul class="footer-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Letterboxd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Contact</h3>
+        <ul class="footer-list">
+          <li><a href="#">hello@cinejunction.com</a></li>
+          <li><a href="#">+1 (415) 555-0188</a></li>
+          <li><a href="#">© 2026 CineJunction</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/movies.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>

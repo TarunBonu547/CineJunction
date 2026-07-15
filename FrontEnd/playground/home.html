@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CineJunction — Home</title>
-  <meta name="description" content="CineJunction is a premium cinematic experience built around curated films, AI recommendations, and elegant discovery." />
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
   <header class="site-header" role="banner">
@@ -18,19 +17,19 @@
         </svg>
       </button>
 
-      <a class="brand" href="index.html" aria-label="CineJunction Home">
+      <a class="brand" href="#" aria-label="CineJunction Home">
         <span class="logo">CineJunction</span>
       </a>
 
       <nav id="site-navigation" class="site-nav" role="navigation" aria-label="Primary navigation">
         <ul class="nav-list">
-          <li><a class="nav-link is-active" href="index.html">Home</a></li>
-          <li><a class="nav-link" href="pages/movies.html">Movies</a></li>
-          <li><a class="nav-link" href="pages/tv-shows.html">Series</a></li>
-          <li><a class="nav-link" href="pages/anime.html">Anime</a></li>
-          <li><a class="nav-link" href="pages/trending.html">Trending</a></li>
-          <li><a class="nav-link" href="pages/community.html">Community</a></li>
-          <li><a class="nav-link" href="pages/watchlist.html">Lists</a></li>
+          <li><a class="nav-link is-active" href="#">Home</a></li>
+          <li><a class="nav-link" href="#">Movies</a></li>
+          <li><a class="nav-link" href="#">Series</a></li>
+          <li><a class="nav-link" href="#">Anime</a></li>
+          <li><a class="nav-link" href="#">People</a></li>
+          <li><a class="nav-link" href="#">Community</a></li>
+          <li><a class="nav-link" href="#">Lists</a></li>
         </ul>
       </nav>
 
@@ -40,26 +39,26 @@
           <input type="search" placeholder="Search titles, people, mood..." aria-label="Search site" />
         </label>
 
-        <a class="btn btn-icon" href="pages/settings.html" aria-label="Notifications">⎋</a>
-        <a class="btn btn-icon profile-pill" href="pages/profile.html" aria-label="Open profile menu">A</a>
+        <button class="btn btn-icon" aria-label="Notifications">⎋</button>
+        <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
       </div>
     </div>
 
     <div class="mobile-sheet" id="mobile-sheet" hidden>
       <nav class="mobile-nav" aria-label="Mobile primary navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="pages/movies.html">Movies</a></li>
-          <li><a href="pages/tv-shows.html">Series</a></li>
-          <li><a href="pages/anime.html">Anime</a></li>
-          <li><a href="pages/trending.html">Trending</a></li>
-          <li><a href="pages/community.html">Community</a></li>
-          <li><a href="pages/watchlist.html">Lists</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Series</a></li>
+          <li><a href="#">Anime</a></li>
+          <li><a href="#">People</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Lists</a></li>
         </ul>
       </nav>
       <div class="mobile-actions">
-        <a href="pages/profile.html">Profile</a>
-        <a href="pages/settings.html">Notifications</a>
+        <a href="#">Profile</a>
+        <a href="#">Notifications</a>
       </div>
     </div>
   </header>
@@ -82,9 +81,9 @@
           <p class="body-text hero-description">A gifted navigator returns to the edge of the Pacific to uncover a signal that could alter the fate of a collapsing city and the people who still believe in the horizon.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="pages/movies.html">Explore Movies</a>
-            <a class="btn btn-secondary" href="pages/tv-shows.html">Discover Series</a>
-            <a class="btn btn-outline" href="pages/watchlist.html">Add to Watchlist</a>
+            <a class="btn btn-primary" href="#">Watch Trailer</a>
+            <a class="btn btn-secondary" href="#">View Details</a>
+            <button class="btn btn-outline" aria-pressed="false">Add to Watchlist</button>
           </div>
         </div>
 
@@ -276,9 +275,6 @@
     </div>
   </footer>
 
-  <script src="js/navigation.js" defer></script>
-  <script src="js/search.js" defer></script>
-  <script src="js/utils.js" defer></script>
-  <script src="js/navbar.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
 </body>
 </html>

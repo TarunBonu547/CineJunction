@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Movie Details</title>
+  <meta name="description" content="A premium, cinematic movie details experience for The Last Horizon." />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="movie-details-page">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect y="1" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="6" width="22" height="2" rx="1" fill="#fff" />
+          <rect y="11" width="22" height="2" rx="1" fill="#fff" />
+        </svg>
+      </button>
+      <a class="brand" href="../index.html" aria-label="CineJunction Home">
+        <span class="logo">CineJunction</span>
+      </a>
+      <nav id="site-navigation" class="site-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link is-active" href="movies.html">Movies</a></li>
+          <li><a class="nav-link" href="tv-shows.html">TV Shows</a></li>
+          <li><a class="nav-link" href="anime.html">Anime</a></li>
+          <li><a class="nav-link" href="trending.html">Trending</a></li>
+          <li><a class="nav-link" href="#">Community</a></li>
+          <li><a class="nav-link" href="#">Lists</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <label class="search-shell" aria-label="Search site">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Search titles, people, moods..." aria-label="Search site" />
+        </label>
+        <button class="btn btn-icon" aria-label="Notifications">⎋</button>
+        <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="movie-hero" aria-labelledby="movie-title">
+      <div class="movie-hero__backdrop" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=80" alt="" />
+      </div>
+      <div class="container movie-hero__content">
+        <div class="movie-hero__poster">
+          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="The Last Horizon movie poster" />
+        </div>
+        <div class="movie-hero__copy">
+          <p class="eyebrow">Featured Premiere</p>
+          <h1 class="hero-title" id="movie-title" data-hero-title>The Last Horizon</h1>
+          <p class="hero-tagline" data-hero-tagline>A signal at the edge of the ocean rewrites the map of memory.</p>
+          <ul class="meta-list" aria-label="Movie metadata">
+            <li><span class="meta-pill" data-hero-year>2026</span></li>
+            <li><span class="meta-pill" data-hero-runtime>2h 12m</span></li>
+            <li><span class="meta-pill" data-hero-genre>Sci-Fi</span></li>
+            <li><span class="meta-pill" data-hero-language>English</span></li>
+            <li><span class="meta-pill" data-hero-rating>PG-13</span></li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#">Watch Trailer</a>
+            <button class="btn btn-secondary" type="button">Add to Watchlist</button>
+            <button class="btn btn-outline" type="button">Mark as Watched</button>
+            <button class="btn btn-outline" type="button">Favorite</button>
+            <button class="btn btn-outline" type="button">Share</button>
+            <button class="btn btn-outline" type="button">Rate Movie</button>
+          </div>
+          <div class="hero-stats" aria-label="Movie scores">
+            <div class="hero-stat">
+              <span class="hero-stat__label">IMDb</span>
+              <strong>8.7</strong>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__label">CJ</span>
+              <strong>9.2</strong>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__label">Popularity</span>
+              <strong>91%</strong>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__label">Director</span>
+              <strong>Mina Kade</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="story-title">
+      <div class="movie-info-grid">
+        <article class="info-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">01</p>
+              <h2 class="section-title" id="story-title">Storyline & Production</h2>
+            </div>
+          </div>
+          <p class="body-text">A gifted navigator returns to the edge of the Pacific to uncover a signal that could alter the fate of a collapsing city. As the inquiry deepens, the mission becomes less about survival than about whether the truth is worth preserving at all.</p>
+          <div class="detail-list" role="list">
+            <div role="listitem"><span>Director</span><strong>Mina Kade</strong></div>
+            <div role="listitem"><span>Writers</span><strong>Ari Vale, Lena Ortiz</strong></div>
+            <div role="listitem"><span>Producers</span><strong>Nadia Sato, Daniel Quill</strong></div>
+            <div role="listitem"><span>Production Company</span><strong>Northlight Studios</strong></div>
+            <div role="listitem"><span>Budget</span><strong>$38M</strong></div>
+            <div role="listitem"><span>Box Office</span><strong>$142M</strong></div>
+            <div role="listitem"><span>Country</span><strong>United States</strong></div>
+            <div role="listitem"><span>Languages</span><strong>English, Japanese</strong></div>
+            <div role="listitem"><span>Awards</span><strong>Berlin International Film Festival – Official Selection</strong></div>
+            <div role="listitem"><span>Filming Locations</span><strong>Mendocino, Kyoto</strong></div>
+          </div>
+        </article>
+
+        <aside class="info-card info-card--stacked" aria-label="Movie highlights">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">02</p>
+              <h3 class="section-title">Key Facts</h3>
+            </div>
+          </div>
+          <ul class="fact-list">
+            <li><span>Genre</span><strong>Sci-Fi • Drama • Mystery</strong></li>
+            <li><span>Release</span><strong>October 2026</strong></li>
+            <li><span>Runtime</span><strong>2h 12m</strong></li>
+            <li><span>Format</span><strong>4K Dolby Atmos</strong></li>
+            <li><span>Age Rating</span><strong>PG-13</strong></li>
+            <li><span>Language</span><strong>English</strong></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="cast-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">03</p>
+          <h2 class="section-title" id="cast-title">Cast & Crew</h2>
+        </div>
+        <a class="section-link" href="#">View Full Credits</a>
+      </div>
+      <div class="person-grid">
+        <article class="person-card">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Portrait of Mina Kade" />
+          <div class="person-card__body">
+            <h3 class="movie-title">Mina Kade</h3>
+            <p class="body-text">Director</p>
+            <span class="meta-pill">The Last Horizon</span>
+          </div>
+        </article>
+        <article class="person-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Portrait of Eli Mercer" />
+          <div class="person-card__body">
+            <h3 class="movie-title">Eli Mercer</h3>
+            <p class="body-text">Lead Actor</p>
+            <span class="meta-pill">Noah Voss</span>
+          </div>
+        </article>
+        <article class="person-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Portrait of Lina Ford" />
+          <div class="person-card__body">
+            <h3 class="movie-title">Lina Ford</h3>
+            <p class="body-text">Composer</p>
+            <span class="meta-pill">Original Score</span>
+          </div>
+        </article>
+        <article class="person-card">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Portrait of Jonah Stein" />
+          <div class="person-card__body">
+            <h3 class="movie-title">Jonah Stein</h3>
+            <p class="body-text">Cinematographer</p>
+            <span class="meta-pill">Visual Language</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">04</p>
+          <h2 class="section-title" id="gallery-title">Media Gallery</h2>
+        </div>
+        <a class="section-link" href="#">Open Full Gallery</a>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-card" type="button" data-media-type="image" data-media-src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1200&q=80" data-media-title="Official Poster">
+          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Movie poster tile" />
+          <div class="gallery-card__body">
+            <h3 class="movie-title">Official Poster</h3>
+            <p class="body-text">Key art</p>
+          </div>
+        </button>
+        <button class="gallery-card" type="button" data-media-type="image" data-media-src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" data-media-title="Production Still">
+          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="Production still" />
+          <div class="gallery-card__body">
+            <h3 class="movie-title">Production Still</h3>
+            <p class="body-text">Behind the lens</p>
+          </div>
+        </button>
+        <button class="gallery-card" type="button" data-media-type="video" data-media-src="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1" data-media-title="Official Trailer">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Trailer preview" />
+          <div class="gallery-card__body">
+            <h3 class="movie-title">Official Trailer</h3>
+            <p class="body-text">Teaser experience</p>
+          </div>
+        </button>
+      </div>
+      <div class="modal" id="media-modal" role="dialog" aria-modal="true" aria-label="Media viewer" hidden>
+        <button class="modal__close" type="button" aria-label="Close media viewer">×</button>
+        <div class="modal__content" role="document"></div>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="ratings-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">05</p>
+          <h2 class="section-title" id="ratings-title">Ratings & Reviews</h2>
+        </div>
+      </div>
+      <div class="ratings-grid">
+        <article class="ratings-card">
+          <div class="rating-overview">
+            <div>
+              <p class="section-label">CineJunction Score</p>
+              <h3 class="hero-title">9.2</h3>
+            </div>
+            <div class="score-pill">Critics' Pick</div>
+          </div>
+          <ul class="score-list" aria-label="External ratings">
+            <li><span>IMDb</span><strong>8.7</strong></li>
+            <li><span>Rotten Tomatoes</span><strong>89%</strong></li>
+            <li><span>Metacritic</span><strong>82</strong></li>
+            <li><span>Audience</span><strong>4.6/5</strong></li>
+          </ul>
+        </article>
+        <article class="ratings-card">
+          <h3 class="movie-title">Rating Breakdown</h3>
+          <ul class="rating-chart" aria-label="Score distribution">
+            <li><span>5★</span><div class="bar"><i style="width: 62%"></i></div><strong>62%</strong></li>
+            <li><span>4★</span><div class="bar"><i style="width: 24%"></i></div><strong>24%</strong></li>
+            <li><span>3★</span><div class="bar"><i style="width: 8%"></i></div><strong>8%</strong></li>
+            <li><span>2★</span><div class="bar"><i style="width: 4%"></i></div><strong>4%</strong></li>
+            <li><span>1★</span><div class="bar"><i style="width: 2%"></i></div><strong>2%</strong></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="reviews-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">06</p>
+          <h2 class="section-title" id="reviews-title">Reviews</h2>
+        </div>
+        <a class="section-link" href="#">Write Review</a>
+      </div>
+      <div class="review-toolbar">
+        <div class="chip-row" role="group" aria-label="Review filters">
+          <button class="chip is-active" type="button" data-filter="all">All</button>
+          <button class="chip" type="button" data-filter="user">User</button>
+          <button class="chip" type="button" data-filter="critic">Critic</button>
+        </div>
+        <label class="sort-shell">
+          <span class="input-label">Sort</span>
+          <select id="review-sort" aria-label="Sort reviews by">
+            <option value="helpful">Most Helpful</option>
+            <option value="recent">Most Recent</option>
+            <option value="rating">Highest Rating</option>
+          </select>
+        </label>
+      </div>
+      <div class="review-list" id="review-list">
+        <article class="review-card" data-type="user" data-helpful="214" data-rating="5" data-spoiler="false">
+          <div class="review-card__meta">
+            <div>
+              <h3 class="movie-title">Nadia L.</h3>
+              <p class="body-text">Verified Viewer</p>
+            </div>
+            <span class="meta-pill">★★★★★</span>
+          </div>
+          <p class="body-text">A devastating, elegant story that understands the loneliness of longing and the cost of truth. It never overexplains itself, which makes the ending land harder.</p>
+          <div class="review-card__actions">
+            <div class="review-card__controls">
+              <button class="btn btn-outline" type="button" data-vote="helpful">Helpful</button>
+              <button class="btn btn-outline" type="button" data-vote="dislike">Dislike</button>
+            </div>
+            <span class="meta-pill">214 helpful</span>
+          </div>
+        </article>
+        <article class="review-card" data-type="critic" data-helpful="92" data-rating="4" data-spoiler="true">
+          <div class="review-card__meta">
+            <div>
+              <h3 class="movie-title">The Film Ledger</h3>
+              <p class="body-text">Critic Review</p>
+            </div>
+            <span class="meta-pill">★★★★☆</span>
+          </div>
+          <p class="body-text">The pacing is deliberate, the imagery immaculate, and the emotional payoffs are earned. The only weakness is a slightly over-stylized final act.</p>
+          <button class="btn btn-outline review-card__toggle" type="button">Reveal spoiler</button>
+          <div class="review-card__actions">
+            <div class="review-card__controls">
+              <button class="btn btn-outline" type="button" data-vote="helpful">Helpful</button>
+              <button class="btn btn-outline" type="button" data-vote="dislike">Dislike</button>
+            </div>
+            <span class="meta-pill">92 helpful</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="insights-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">07</p>
+          <h2 class="section-title" id="insights-title">AI Insights</h2>
+        </div>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card">
+          <p class="section-label">AI Summary</p>
+          <h3 class="movie-title">An intimate mystery about memory, grief, and the human need for a horizon.</h3>
+          <p class="body-text">The film is designed as a slow-burn revelation where each clue reframes the emotional stakes.</p>
+        </article>
+        <article class="insight-card">
+          <p class="section-label">Mood Analysis</p>
+          <h3 class="movie-title">Quietly melancholic, luminous, and emotionally precise.</h3>
+          <p class="body-text">The soundtrack, color palette, and pacing create a reflective mood rather than a high intensity one.</p>
+        </article>
+        <article class="insight-card">
+          <p class="section-label">Themes</p>
+          <h3 class="movie-title">Memory, loss, choice, and the distance between truth and comfort.</h3>
+          <p class="body-text">The narrative keeps returning to what people protect and what they are willing to sacrifice.</p>
+        </article>
+        <article class="insight-card">
+          <p class="section-label">Audience Match</p>
+          <h3 class="movie-title">Best for viewers who loved reflective thrillers and emotionally rich dramas.</h3>
+          <p class="body-text">The pacing favors contemplation over spectacle, so it rewards patient attention.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="availability-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">08</p>
+          <h2 class="section-title" id="availability-title">Streaming Availability</h2>
+        </div>
+      </div>
+      <div class="availability-grid">
+        <article class="availability-card">
+          <h3 class="movie-title">Netflix</h3>
+          <p class="body-text">Available for streaming</p>
+        </article>
+        <article class="availability-card">
+          <h3 class="movie-title">Prime Video</h3>
+          <p class="body-text">Rental soon</p>
+        </article>
+        <article class="availability-card">
+          <h3 class="movie-title">Disney+</h3>
+          <p class="body-text">Coming later this season</p>
+        </article>
+        <article class="availability-card">
+          <h3 class="movie-title">Apple TV</h3>
+          <p class="body-text">Purchase option</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container content-section" aria-labelledby="related-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">09</p>
+          <h2 class="section-title" id="related-title">Related Movies</h2>
+        </div>
+        <a class="section-link" href="#">See All</a>
+      </div>
+      <div class="card-row">
+        <article class="movie-card">
+          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Velvet Silence poster" /></div>
+          <div class="movie-card__body">
+            <div class="movie-card__meta"><span class="meta-pill">IMDb 7.9</span><span class="meta-pill">Drama</span></div>
+            <h3 class="movie-title">Velvet Silence</h3>
+            <p class="body-text">A graceful portrait of grief and memory.</p>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Aether Bloom poster" /></div>
+          <div class="movie-card__body">
+            <div class="movie-card__meta"><span class="meta-pill">IMDb 8.4</span><span class="meta-pill">Fantasy</span></div>
+            <h3 class="movie-title">Aether Bloom</h3>
+            <p class="body-text">A luminous journey through ritual and renewal.</p>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Midnight Tides poster" /></div>
+          <div class="movie-card__body">
+            <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">Thriller</span></div>
+            <h3 class="movie-title">Midnight Tides</h3>
+            <p class="body-text">A citywide blackout reveals a hidden pattern.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="CineJunction Home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="body-text">Premium discovery, intelligent curation, and cinematic ease.</p>
+      </div>
+      <div>
+        <h3 class="movie-title">Quick Links</h3>
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Social</h3>
+        <ul class="footer-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Letterboxd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="movie-title">Contact</h3>
+        <ul class="footer-list">
+          <li><a href="#">hello@cinejunction.com</a></li>
+          <li><a href="#">+1 (415) 555-0188</a></li>
+          <li><a href="#">© 2026 CineJunction</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/json" id="movie-data">
+    {
+      "movie": {
+        "title": "The Last Horizon",
+        "tagline": "A signal at the edge of the ocean rewrites the map of memory.",
+        "year": 2026,
+        "runtime": "2h 12m",
+        "genre": "Sci-Fi",
+        "language": "English",
+        "ageRating": "PG-13",
+        "imdbRating": "8.7",
+        "cjRating": "9.2",
+        "popularityScore": "91%",
+        "director": "Mina Kade"
+      }
+    }
+  </script>
+  <script src="../js/gallery.js" defer></script>
+  <script src="../js/reviews.js" defer></script>
+  <script src="../js/movie-details.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>

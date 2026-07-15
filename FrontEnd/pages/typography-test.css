@@ -1,0 +1,94 @@
+.typography-page {
+    background: #111111;
+    min-height: 100vh;
+    color: white;
+
+    padding: 80px 40px;
+}
+
+.typography-page {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-label {
+    color: #9a9a9a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.logo {
+    font-family: var(--font-logo);
+    font-size: 72px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    margin-top: 24px;
+}
+
+.body-text {
+    font-family: var(--font-ui);
+    color: #b3b3b3;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 24px auto;
+}
+
+.type-section {
+    margin-bottom: 70px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.card {
+    background: #1b1b1b;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    margin-top: 20px;
+}
+
+.movie-title {
+    font-family: var(--font-title);
+
+    font-size: 34px;
+
+    margin-bottom: 18px;
+}
+
+.comparison {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+}
+
+button {
+    margin-top: 24px;
+
+    padding: 12px 24px;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: black;
+
+    font-family: inherit;
+}

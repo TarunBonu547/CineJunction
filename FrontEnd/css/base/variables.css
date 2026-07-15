@@ -1,0 +1,69 @@
+:root {
+
+    /* ==========================================
+       Typography
+    ========================================== */
+
+    --font-logo: "Shikamaru", cursive;
+
+    --font-display: "Storm Gust", serif;
+
+    --font-title: "Boldonse", serif;
+
+    --font-ui: "Outfit", sans-serif;
+
+}
+
+/* ==========================================
+   Color Tokens (CineJunction)
+========================================== */
+:root {
+    --cj-bg: #0F0F10;
+    --cj-surface: #18181B;
+    --cj-primary: #E50914;
+    --cj-primary-opaque: rgba(229,9,20,0.24);
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --border: rgba(255,255,255,0.08);
+    --glass-0: rgba(24,24,27,0.9);
+}
+
+:root {
+
+    --weight-light: 300;
+
+    --weight-regular: 400;
+
+    --weight-medium: 500;
+
+    --weight-semibold: 600;
+
+    --weight-bold: 700;
+
+    --weight-black: 900;
+
+}
+
+:root {
+
+    --fs-xs: 12px;
+    --fs-sm: 14px;
+    --fs-md: 16px;
+    --fs-lg: 18px;
+    --fs-xl: 20px;
+    --fs-2xl: 24px;
+    --fs-3xl: 32px;
+    --fs-4xl: 40px;
+    --fs-5xl: 56px;
+}
+
+:root {
+
+    --lh-tight: 1.2;
+
+    --lh-normal: 1.5;
+
+    --lh-loose: 1.8;
+
+}
+

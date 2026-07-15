@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineJunction | Verify Email</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell" role="main">
+    <section class="auth-hero" aria-labelledby="verify-hero-title">
+      <div class="auth-hero__content">
+        <a class="brand" href="../index.html" aria-label="Return to CineJunction home">
+          <span class="logo">CineJunction</span>
+        </a>
+        <p class="eyebrow">Verification</p>
+        <h1 class="hero-title" id="verify-hero-title">One last step to unlock your account.</h1>
+        <p class="body-text">Confirm your email so your profile, watchlist, and recommendations stay perfectly in sync.</p>
+      </div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="verify-title">
+      <div class="auth-card__inner">
+        <div class="status-card" role="status" aria-live="polite">
+          <div class="status-icon" aria-hidden="true">✓</div>
+          <p class="eyebrow">Email verification</p>
+          <h2 class="section-title" id="verify-title">Almost there</h2>
+          <p class="body-text">We’ve sent a confirmation message to your inbox. Open it to continue your CineJunction experience.</p>
+        </div>
+
+        <div class="action-stack">
+          <a class="btn btn-primary" href="email-sent.html">Open mail app</a>
+          <button class="btn btn-outline" type="button">Resend email</button>
+          <a class="btn btn-ghost" href="login.html">Back to login</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+</body>
+</html>
