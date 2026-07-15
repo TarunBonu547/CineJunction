@@ -1,4 +1,6 @@
 (function () {
+  window.CineJunction = window.CineJunction || {};
+
   function showToast(message) {
     const stack = document.querySelector('.toast-stack');
     if (!stack) {
@@ -48,19 +50,51 @@
     requestAnimationFrame(() => main.classList.add('is-ready'));
   }
 
+  function slugify(text) {
+    return text
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-');
+  }
+
+  function initCardClicks() {
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.movie-card');
+      if (!card) return;
+
+      // Ignore if clicking details page action buttons (bookmark, like, etc)
+      if (e.target.closest('button') || e.target.closest('a')) {
+        return;
+      }
+
+      const titleElement = card.querySelector('.movie-title');
+      if (titleElement) {
+        const titleText = titleElement.textContent.trim();
+        const slug = slugify(titleText);
+        const isInPages = window.location.pathname.includes('/pages/');
+        const detailsPage = isInPages ? 'movie-details.html' : 'pages/movie-details.html';
+        window.location.href = `${detailsPage}?id=${slug}`;
+      }
+    });
+  }
+
   function initUtilities() {
     setActiveNav();
     updateProfileChip();
     applyPageTransition();
+    initCardClicks();
 
     document.querySelectorAll('[data-toast]').forEach((button) => {
       button.addEventListener('click', () => showToast(button.dataset.toast || 'Saved'));
     });
   }
 
-  window.CineJunction = window.CineJunction || {};
   window.CineJunction.showToast = showToast;
   window.CineJunction.initUtilities = initUtilities;
+  window.CineJunction.slugify = slugify;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initUtilities);

@@ -117,16 +117,19 @@
             return;
           }
 
-          if (submitButton) {
-            submitButton.textContent = 'Signing in…';
-            submitButton.disabled = true;
-          }
-
           const user = {
             name: email.split('@')[0].replace(/[._-]+/g, ' '),
             username: email.split('@')[0],
             email,
-            joinedAt: new Date().toISOString()
+            joinedAt: new Date().toISOString(),
+            bio: "Cinemaphile, amateur photographer, and collector of physical screenprints. I prefer quiet, deliberate pacing and beautiful scores.",
+            favoriteGenres: ["Sci-Fi", "Drama", "Mystery"],
+            stats: {
+              moviesWatched: 42,
+              seriesWatched: 15,
+              reviewsWritten: 8,
+              watchTime: "112h"
+            }
           };
 
           setStoredAuth(user);
@@ -166,7 +169,15 @@
             name,
             username,
             email,
-            joinedAt: new Date().toISOString()
+            joinedAt: new Date().toISOString(),
+            bio: "Cinemaphile, amateur photographer, and collector of physical screenprints. I prefer quiet, deliberate pacing and beautiful scores.",
+            favoriteGenres: ["Sci-Fi", "Drama", "Mystery"],
+            stats: {
+              moviesWatched: 42,
+              seriesWatched: 15,
+              reviewsWritten: 8,
+              watchTime: "112h"
+            }
           };
 
           setStoredAuth(user);
