@@ -1,21 +1,21 @@
 package com.cinejunction.dto.response;
 
+import com.cinejunction.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiResponse<T> {
-    private boolean success;
-    private String message;
-    private T data;
-    private List<String> errors;
+public class UserResponse {
+
+    private Long id;
+    private String username;
+    private String email;
+    private Role role;
 }
