@@ -1,4 +1,4 @@
-package com.cinejunction.service;
+package com.cinejunction.service.interfaces;
 
 import com.cinejunction.dto.request.ChangePasswordRequest;
 import com.cinejunction.dto.request.LoginRequest;

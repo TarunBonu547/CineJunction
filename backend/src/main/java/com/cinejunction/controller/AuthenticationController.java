@@ -6,7 +6,7 @@ import com.cinejunction.dto.request.RegisterRequest;
 import com.cinejunction.dto.response.ApiResponse;
 import com.cinejunction.dto.response.AuthenticationResponse;
 import com.cinejunction.dto.response.UserResponse;
-import com.cinejunction.service.AuthenticationService;
+import com.cinejunction.service.interfaces.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
