@@ -9,7 +9,10 @@ import com.cinejunction.dto.response.UserResponse;
 public interface AuthenticationService {
 
     AuthenticationResponse register(RegisterRequest request);
+
     AuthenticationResponse login(LoginRequest request);
+
     UserResponse getCurrentUser();
+
     void changePassword(ChangePasswordRequest request);
 }

@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +21,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
@@ -35,17 +37,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            log.debug("No Authorization header or not Bearer token for {} {}", request.getMethod(), request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
         }
 
-        final String jwt = authHeader.substring(7);
+        final String jwt = authHeader.substring(7).trim();
 
         try {
             final String userEmail = jwtService.extractUsername(jwt);
+            log.debug("Extracted userEmail from JWT: {}", userEmail);
 
             if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+                log.debug("Loaded UserDetails for: {}, authorities: {}", userDetails.getUsername(), userDetails.getAuthorities());
 
                 if (jwtService.isTokenValid(jwt, userDetails)) {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
@@ -57,11 +62,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     SecurityContextHolder.getContext().setAuthentication(authToken);
+                    log.info("JWT authentication successful for user: {} on {} {}", userEmail, request.getMethod(), request.getRequestURI());
+                } else {
+                    log.warn("JWT token validation failed for user: {} on {} {}", userEmail, request.getMethod(), request.getRequestURI());
                 }
             }
         } catch (JwtException | IllegalArgumentException e) {
-            // Invalid / malformed / expired token: do not authenticate, let Spring Security
-            // reject the request with 401 (or the configured unauthorized response).
+            log.warn("JWT parsing/validation error for {} {}: {}", request.getMethod(), request.getRequestURI(), e.getMessage());
+        } catch (RuntimeException e) {
+            log.warn("JWT authentication error for {} {}: {}", request.getMethod(), request.getRequestURI(), e.getMessage());
         }
 
         filterChain.doFilter(request, response);
