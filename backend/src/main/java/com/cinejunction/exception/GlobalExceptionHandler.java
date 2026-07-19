@@ -9,6 +9,8 @@ import com.cinejunction.exception.MovieNotFoundException;
 import com.cinejunction.exception.PersonAlreadyExistsException;
 import com.cinejunction.exception.PersonNotFoundException;
 import com.cinejunction.exception.ResourceNotFoundException;
+import com.cinejunction.movieperson.exception.MoviePersonAlreadyExistsException;
+import com.cinejunction.movieperson.exception.MoviePersonNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -167,6 +169,28 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(PersonAlreadyExistsException.class)
     public ResponseEntity<Map<String, Object>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(MoviePersonNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleMoviePersonNotFoundException(MoviePersonNotFoundException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MoviePersonAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleMoviePersonAlreadyExistsException(MoviePersonAlreadyExistsException ex, HttpServletRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now().toString());
         body.put("status", HttpStatus.CONFLICT.value());

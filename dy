@@ -1,7 +1,7 @@
 {
-  "timestamp" : "2026-07-19T12:16:56.306088200",
+  "timestamp" : "2026-07-19T15:22:35.450904400",
   "status" : 400,
   "error" : "Bad Request",
-  "message" : "Required request body is missing: public org.springframework.http.ResponseEntity<com.cinejunction.person.dto.PersonResponse> com.cinejunction.person.controller.PersonController.updatePerson(java.lang.Long,com.cinejunction.person.dto.PersonRequest)",
-  "path" : "/api/v1/people/3"
+  "message" : "Required request body is missing: public org.springframework.http.ResponseEntity<com.cinejunction.movieperson.dto.MoviePersonResponse> com.cinejunction.movieperson.controller.MoviePersonController.updateRelationship(java.lang.Long,com.cinejunction.movieperson.dto.MoviePersonRequest)",
+  "path" : "/api/v1/movie-people/2"
 }
