@@ -15,6 +15,9 @@ import com.cinejunction.movieperson.exception.MoviePersonNotFoundException;
 import com.cinejunction.rating.exception.RatingAlreadyExistsException;
 import com.cinejunction.rating.exception.RatingNotFoundException;
 import com.cinejunction.rating.exception.UnauthorizedRatingAccessException;
+import com.cinejunction.review.exception.ReviewAlreadyExistsException;
+import com.cinejunction.review.exception.ReviewNotFoundException;
+import com.cinejunction.review.exception.UnauthorizedReviewAccessException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -246,5 +249,38 @@ public class GlobalExceptionHandler {
         body.put("message", ex.getMessage());
         body.put("path", request.getRequestURI());
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ReviewAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleReviewAlreadyExistsException(ReviewAlreadyExistsException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(ReviewNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleReviewNotFoundException(ReviewNotFoundException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UnauthorizedReviewAccessException.class)
+    public ResponseEntity<Map<String, Object>> handleUnauthorizedReviewAccessException(UnauthorizedReviewAccessException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.FORBIDDEN.value());
+        body.put("error", HttpStatus.FORBIDDEN.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.FORBIDDEN);
     }
 }
