@@ -9,8 +9,12 @@ import com.cinejunction.exception.MovieNotFoundException;
 import com.cinejunction.exception.PersonAlreadyExistsException;
 import com.cinejunction.exception.PersonNotFoundException;
 import com.cinejunction.exception.ResourceNotFoundException;
+import com.cinejunction.exception.UserNotFoundException;
 import com.cinejunction.movieperson.exception.MoviePersonAlreadyExistsException;
 import com.cinejunction.movieperson.exception.MoviePersonNotFoundException;
+import com.cinejunction.rating.exception.RatingAlreadyExistsException;
+import com.cinejunction.rating.exception.RatingNotFoundException;
+import com.cinejunction.rating.exception.UnauthorizedRatingAccessException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -198,5 +202,49 @@ public class GlobalExceptionHandler {
         body.put("message", ex.getMessage());
         body.put("path", request.getRequestURI());
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(RatingAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleRatingAlreadyExistsException(RatingAlreadyExistsException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(RatingNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleRatingNotFoundException(RatingNotFoundException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UnauthorizedRatingAccessException.class)
+    public ResponseEntity<Map<String, Object>> handleUnauthorizedRatingAccessException(UnauthorizedRatingAccessException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.FORBIDDEN.value());
+        body.put("error", HttpStatus.FORBIDDEN.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleUserNotFoundException(UserNotFoundException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 }
