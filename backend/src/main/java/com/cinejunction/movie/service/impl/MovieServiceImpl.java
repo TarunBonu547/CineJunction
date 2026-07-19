@@ -7,15 +7,20 @@ import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
 import com.cinejunction.movie.entity.Movie;
+import com.cinejunction.movie.enums.MovieStatus;
 import com.cinejunction.movie.mapper.MovieMapper;
 import com.cinejunction.movie.repository.MovieRepository;
 import com.cinejunction.movie.service.MovieService;
+import com.cinejunction.movie.specification.MovieSpecification;
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -106,6 +111,24 @@ public class MovieServiceImpl implements MovieService {
     public Page<MovieSummaryResponse> searchMovies(String keyword, Pageable pageable) {
         return movieRepository.findByTitleContainingIgnoreCase(keyword, pageable)
                 .map(movieMapper::toSummary);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<MovieSummaryResponse> getFilteredMovies(
+            String genre,
+            String language,
+            Integer year,
+            MovieStatus status,
+            BigDecimal minRating,
+            Integer maxRuntime,
+            Boolean adult,
+            Pageable pageable) {
+
+        Specification<Movie> spec = MovieSpecification.withFilters(
+                genre, language, year, status, minRating, maxRuntime, adult);
+
+        return movieRepository.findAll(spec, pageable).map(movieMapper::toSummary);
     }
 
     private MovieResponse buildMovieResponse(Movie movie) {

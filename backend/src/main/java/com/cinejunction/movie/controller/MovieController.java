@@ -3,8 +3,13 @@ package com.cinejunction.movie.controller;
 import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
+import com.cinejunction.movie.enums.MovieStatus;
 import com.cinejunction.movie.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,8 +21,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
-@RequestMapping("/api/movies")
+@RequestMapping("/api/v1/movies")
 @RequiredArgsConstructor
 @Tag(name = "Movies", description = "Movie management APIs")
 public class MovieController {
@@ -27,7 +34,7 @@ public class MovieController {
     @PostMapping
     @Operation(summary = "Create a new movie", description = "Creates a new movie with the provided details")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Movie created successfully"),
+            @ApiResponse(responseCode = "201", description = "Movie created successfully", content = @Content(schema = @Schema(implementation = MovieResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid input or duplicate title"),
             @ApiResponse(responseCode = "404", description = "One or more genre IDs not found")
     })
@@ -37,19 +44,38 @@ public class MovieController {
     }
 
     @GetMapping
-    @Operation(summary = "Get all movies", description = "Retrieves all movies with pagination")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Movies retrieved successfully")
+    @Operation(summary = "Get all movies", description = "Retrieves all movies with pagination, sorting, and advanced filtering", parameters = {
+            @Parameter(name = "page", description = "Page number (0-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0")),
+            @Parameter(name = "size", description = "Page size", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "20")),
+            @Parameter(name = "sort", description = "Sorting criteria in the format: field,asc or field,desc", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "releaseDate,desc")),
+            @Parameter(name = "genre", description = "Filter by genre name", in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "language", description = "Filter by language", in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "year", description = "Filter by release year", in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "status", description = "Filter by movie status", in = ParameterIn.QUERY, schema = @Schema(type = "string", allowableValues = {"UPCOMING", "IN_PRODUCTION", "POST_PRODUCTION", "RELEASED", "CANCELLED"})),
+            @Parameter(name = "minRating", description = "Filter by minimum average rating", in = ParameterIn.QUERY, schema = @Schema(type = "number", format = "decimal")),
+            @Parameter(name = "maxRuntime", description = "Filter by maximum runtime in minutes", in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "adult", description = "Filter by adult content flag", in = ParameterIn.QUERY, schema = @Schema(type = "boolean"))
     })
-    public ResponseEntity<Page<MovieSummaryResponse>> getAllMovies(Pageable pageable) {
-        Page<MovieSummaryResponse> movies = movieService.getAllMovies(pageable);
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Movies retrieved successfully", content = @Content(schema = @Schema(implementation = Page.class)))
+    })
+    public ResponseEntity<Page<MovieSummaryResponse>> getAllMovies(
+            @Parameter(hidden = true) Pageable pageable,
+            @RequestParam(required = false) String genre,
+            @RequestParam(required = false) String language,
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) MovieStatus status,
+            @RequestParam(required = false) BigDecimal minRating,
+            @RequestParam(required = false) Integer maxRuntime,
+            @RequestParam(required = false) Boolean adult) {
+        Page<MovieSummaryResponse> movies = movieService.getFilteredMovies(genre, language, year, status, minRating, maxRuntime, adult, pageable);
         return ResponseEntity.ok(movies);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get movie by ID", description = "Retrieves a movie by its ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Movie found"),
+            @ApiResponse(responseCode = "200", description = "Movie found", content = @Content(schema = @Schema(implementation = MovieResponse.class))),
             @ApiResponse(responseCode = "404", description = "Movie not found")
     })
     public ResponseEntity<MovieResponse> getMovieById(@PathVariable Long id) {
@@ -60,7 +86,7 @@ public class MovieController {
     @PutMapping("/{id}")
     @Operation(summary = "Update a movie", description = "Updates an existing movie by ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Movie updated successfully"),
+            @ApiResponse(responseCode = "200", description = "Movie updated successfully", content = @Content(schema = @Schema(implementation = MovieResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid input or duplicate title"),
             @ApiResponse(responseCode = "404", description = "Movie not found or genre ID not found")
     })
@@ -81,13 +107,18 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    @Operation(summary = "Search movies", description = "Searches movies by title keyword with pagination")
+    @Operation(summary = "Search movies", description = "Searches movies by title keyword with pagination", parameters = {
+            @Parameter(name = "keyword", description = "Search keyword for movie title", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "Inception")),
+            @Parameter(name = "page", description = "Page number (0-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0")),
+            @Parameter(name = "size", description = "Page size", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "20")),
+            @Parameter(name = "sort", description = "Sorting criteria in the format: field,asc or field,desc", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "title,asc"))
+    })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Search results retrieved successfully")
+            @ApiResponse(responseCode = "200", description = "Search results retrieved successfully", content = @Content(schema = @Schema(implementation = Page.class)))
     })
     public ResponseEntity<Page<MovieSummaryResponse>> searchMovies(
             @RequestParam String keyword,
-            Pageable pageable) {
+            @Parameter(hidden = true) Pageable pageable) {
         Page<MovieSummaryResponse> movies = movieService.searchMovies(keyword, pageable);
         return ResponseEntity.ok(movies);
     }

@@ -5,6 +5,7 @@ import com.cinejunction.dto.request.RegisterRequest;
 import com.cinejunction.dto.response.AuthenticationResponse;
 import com.cinejunction.service.interfaces.AuthenticationService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;

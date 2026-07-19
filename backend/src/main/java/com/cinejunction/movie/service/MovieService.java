@@ -3,8 +3,11 @@ package com.cinejunction.movie.service;
 import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
+import com.cinejunction.movie.enums.MovieStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.math.BigDecimal;
 
 /**
  * Service interface for managing movies.
@@ -59,4 +62,27 @@ public interface MovieService {
      * @return a page of movie summary responses
      */
     Page<MovieSummaryResponse> searchMovies(String keyword, Pageable pageable);
+
+    /**
+     * Retrieves all movies with advanced filtering, sorting, and pagination.
+     *
+     * @param genre    the genre name filter
+     * @param language the language filter
+     * @param year     the release year filter
+     * @param status   the movie status filter
+     * @param minRating the minimum average rating filter
+     * @param maxRuntime the maximum runtime filter
+     * @param adult    the adult content flag filter
+     * @param pageable pagination and sorting information
+     * @return a page of movie summary responses
+     */
+    Page<MovieSummaryResponse> getFilteredMovies(
+            String genre,
+            String language,
+            Integer year,
+            MovieStatus status,
+            BigDecimal minRating,
+            Integer maxRuntime,
+            Boolean adult,
+            Pageable pageable);
 }
