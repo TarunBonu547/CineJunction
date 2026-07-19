@@ -2,57 +2,81 @@ package com.cinejunction.person.entity;
 
 import com.cinejunction.cast.entity.CastMember;
 import com.cinejunction.common.entity.BaseEntity;
-import com.cinejunction.movie.enums.PersonDepartment;
+import com.cinejunction.enums.Department;
+import com.cinejunction.enums.Gender;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import jakarta.persistence.Lob;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "persons")
+@Table(name = "people")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
+@Check(constraints = "popularity >= 0")
 public class Person extends BaseEntity {
 
     @NotBlank
-    @Column(nullable = false, length = 200)
+    @Size(min = 2, max = 150)
+    @Column(nullable = false, length = 150)
     private String name;
 
-    @Lob
-    @Column(columnDefinition = "TEXT")
+    @Size(max = 5000)
+    @Column(length = 5000)
     private String biography;
 
-    private LocalDate birthday;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
-    private LocalDate deathday;
+    @Column(name = "death_date")
+    private LocalDate deathDate;
 
-    @Column(length = 500)
-    private String profileImage;
-
-    @Column(length = 200)
+    @Column(length = 100)
     private String placeOfBirth;
 
+    @Column(length = 100)
+    private String nationality;
+
     @Enumerated(EnumType.STRING)
-    @Column(length = 50)
-    private PersonDepartment knownForDepartment;
+    @Column(nullable = false, length = 20)
+    private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Department department;
+
+    @Column(name = "profile_image_url", length = 500)
+    private String profileImageUrl;
+
+    @DecimalMin("0")
+    @Column(nullable = false)
+    @Builder.Default
+    private Double popularity = 0.0;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean adult = false;
 
     @OneToMany(
             mappedBy = "person",
