@@ -5,6 +5,7 @@ import com.cinejunction.exception.EmailAlreadyExistsException;
 import com.cinejunction.exception.GenreAlreadyExistsException;
 import com.cinejunction.exception.GenreNotFoundException;
 import com.cinejunction.exception.InvalidPasswordException;
+import com.cinejunction.exception.MovieAlreadyExistsException;
 import com.cinejunction.exception.MovieNotFoundException;
 import com.cinejunction.exception.PersonAlreadyExistsException;
 import com.cinejunction.exception.PersonNotFoundException;
@@ -18,6 +19,10 @@ import com.cinejunction.rating.exception.UnauthorizedRatingAccessException;
 import com.cinejunction.review.exception.ReviewAlreadyExistsException;
 import com.cinejunction.review.exception.ReviewNotFoundException;
 import com.cinejunction.review.exception.UnauthorizedReviewAccessException;
+import com.cinejunction.tmdb.exception.TMDbMovieNotFoundException;
+import com.cinejunction.tmdb.exception.TMDbRateLimitException;
+import com.cinejunction.tmdb.exception.TMDbServerException;
+import com.cinejunction.tmdb.exception.TMDbUnauthorizedException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -152,6 +157,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(MovieAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleMovieAlreadyExistsException(MovieAlreadyExistsException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(GenreNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleGenreNotFoundException(GenreNotFoundException ex, HttpServletRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -282,5 +298,49 @@ public class GlobalExceptionHandler {
         body.put("message", ex.getMessage());
         body.put("path", request.getRequestURI());
         return new ResponseEntity<>(body, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(TMDbMovieNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleTMDbMovieNotFoundException(TMDbMovieNotFoundException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TMDbUnauthorizedException.class)
+    public ResponseEntity<Map<String, Object>> handleTMDbUnauthorizedException(TMDbUnauthorizedException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.UNAUTHORIZED.value());
+        body.put("error", HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(TMDbRateLimitException.class)
+    public ResponseEntity<Map<String, Object>> handleTMDbRateLimitException(TMDbRateLimitException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.TOO_MANY_REQUESTS.value());
+        body.put("error", HttpStatus.TOO_MANY_REQUESTS.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.TOO_MANY_REQUESTS);
+    }
+
+    @ExceptionHandler(TMDbServerException.class)
+    public ResponseEntity<Map<String, Object>> handleTMDbServerException(TMDbServerException ex, HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        body.put("error", HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        body.put("message", ex.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

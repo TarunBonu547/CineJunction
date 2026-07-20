@@ -49,9 +49,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         userRepository.save(user);
 
+        String token = jwtService.generateToken(user.getEmail());
+
         return AuthenticationResponse.builder()
                 .message("User registered successfully")
-                .token(null)
+                .token(token)
                 .build();
     }
 

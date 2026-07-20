@@ -34,13 +34,14 @@
   }
 
   function updateProfileChip() {
-    const user = window.CineJunction?.getAuthState?.() || null;
-    const button = document.querySelector('.profile-pill');
+    var user = window.CineJunction?.getAuthState?.() || null;
+    var button = document.querySelector('.profile-pill');
     if (!button) return;
 
-    const initial = user?.name?.charAt(0)?.toUpperCase() || 'A';
+    var displayName = user && user.user && (user.user.fullName || user.user.username) ? (user.user.fullName || user.user.username) : 'User';
+    var initial = displayName.charAt(0).toUpperCase();
     button.textContent = initial;
-    button.setAttribute('aria-label', user ? `Open profile menu for ${user.name}` : 'Open profile menu');
+    button.setAttribute('aria-label', user ? ('Open profile menu for ' + displayName) : 'Open profile menu');
   }
 
   function applyPageTransition() {

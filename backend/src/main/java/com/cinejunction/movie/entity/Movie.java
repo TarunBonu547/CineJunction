@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMax;
@@ -105,6 +106,46 @@ public class Movie extends BaseEntity {
     )
     @Builder.Default
     private Set<Genre> genres = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_production_companies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "production_company_id")
+    )
+    @Builder.Default
+    private Set<ProductionCompany> productionCompanies = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_production_countries",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "production_country_id")
+    )
+    @Builder.Default
+    private Set<ProductionCountry> productionCountries = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_spoken_languages",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "spoken_language_id")
+    )
+    @Builder.Default
+    private Set<SpokenLanguage> spokenLanguages = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_keywords",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "keyword_id")
+    )
+    @Builder.Default
+    private Set<Keyword> keywords = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "collection_id")
+    private Collection collection;
 
     @OneToMany(
             mappedBy = "movie",

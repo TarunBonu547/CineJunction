@@ -2,8 +2,8 @@
   window.CineJunction = window.CineJunction || {};
 
   function injectHeaderAndFooter() {
-    const pathname = window.location.pathname;
-    const isInPages = pathname.includes('/pages/');
+    var pathname = window.location.pathname;
+    var isInPages = pathname.indexOf('/pages/') !== -1;
 
     function getLink(path) {
       if (path === 'index.html') {
@@ -12,7 +12,28 @@
       return isInPages ? path : 'pages/' + path;
     }
 
-    const header = document.querySelector('.site-header');
+    var user = window.CineJunction.getAuthState ? window.CineJunction.getAuthState() : null;
+    var isLoggedIn = !!(user && user.token);
+
+    var authActions = '';
+    if (isLoggedIn) {
+      var displayName = user.user && (user.user.fullName || user.user.username) ? (user.user.fullName || user.user.username) : 'User';
+      var initial = displayName.charAt(0).toUpperCase();
+      authActions = '<div class="profile-dropdown" data-profile-toggle>' +
+        '<button class="btn btn-icon profile-pill" aria-label="Open profile menu">' + initial + '</button>' +
+        '<div class="profile-menu" role="menu">' +
+          '<a href="' + getLink('profile.html') + '" role="menuitem">Profile</a>' +
+          '<a href="' + getLink('watchlist.html') + '" role="menuitem">Watchlist</a>' +
+          '<a href="' + getLink('settings.html') + '" role="menuitem">Settings</a>' +
+          '<button id="global-logout-btn" role="menuitem">Logout</button>' +
+        '</div>' +
+      '</div>';
+    } else {
+      authActions = '<a class="btn btn-outline" href="' + getLink('login.html') + '">Sign In</a>' +
+        '<a class="btn btn-primary" href="' + getLink('register.html') + '">Get Started</a>';
+    }
+
+    var header = document.querySelector('.site-header');
     if (header) {
       header.innerHTML = `
         <div class="container header-inner">
@@ -47,17 +68,7 @@
               <div class="search-suggestions" aria-label="Search suggestions"></div>
             </div>
 
-            <a class="btn btn-icon" href="${getLink('settings.html')}" aria-label="Settings">⎋</a>
-            
-            <div class="profile-dropdown" data-profile-toggle>
-              <button class="btn btn-icon profile-pill" aria-label="Open profile menu">A</button>
-              <div class="profile-menu" role="menu">
-                <a href="${getLink('profile.html')}" role="menuitem">Profile</a>
-                <a href="${getLink('watchlist.html')}" role="menuitem">Watchlist</a>
-                <a href="${getLink('settings.html')}" role="menuitem">Settings</a>
-                <button id="global-logout-btn" role="menuitem">Logout</button>
-              </div>
-            </div>
+            ${authActions}
           </div>
         </div>
 
@@ -74,14 +85,13 @@
             </ul>
           </nav>
           <div class="mobile-actions">
-            <a href="${getLink('profile.html')}">Profile</a>
-            <a href="${getLink('settings.html')}">Settings</a>
+            ${isLoggedIn ? '<a href="' + getLink('profile.html') + '">Profile</a><a href="' + getLink('settings.html') + '">Settings</a>' : '<a href="' + getLink('login.html') + '">Sign In</a><a href="' + getLink('register.html') + '">Get Started</a>'}
           </div>
         </div>
       `;
     }
 
-    const footer = document.querySelector('.site-footer');
+    var footer = document.querySelector('.site-footer');
     if (footer) {
       footer.innerHTML = `
         <div class="container footer-grid">
@@ -123,15 +133,15 @@
   function initNavigation() {
     injectHeaderAndFooter();
 
-    const button = document.querySelector('.hamburger');
-    const sheet = document.getElementById('mobile-sheet');
-    const profileDropdown = document.querySelector('.profile-dropdown');
-    const profileButton = profileDropdown?.querySelector('.profile-pill');
-    const logoutBtn = document.getElementById('global-logout-btn');
+    var button = document.querySelector('.hamburger');
+    var sheet = document.getElementById('mobile-sheet');
+    var profileDropdown = document.querySelector('.profile-dropdown');
+    var profileButton = profileDropdown ? profileDropdown.querySelector('.profile-pill') : null;
+    var logoutBtn = document.getElementById('global-logout-btn');
 
     if (button) {
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
         button.setAttribute('aria-expanded', String(!expanded));
         if (sheet) {
           sheet.hidden = expanded;
@@ -140,13 +150,13 @@
     }
 
     if (profileButton && profileDropdown) {
-      profileButton.addEventListener('click', (e) => {
+      profileButton.addEventListener('click', function (e) {
         e.stopPropagation();
         profileDropdown.classList.toggle('is-open');
       });
     }
 
-    document.addEventListener('click', (event) => {
+    document.addEventListener('click', function (event) {
       if (profileDropdown && !profileDropdown.contains(event.target)) {
         profileDropdown.classList.remove('is-open');
       }
@@ -157,32 +167,34 @@
     });
 
     if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
+      logoutBtn.addEventListener('click', function () {
         if (window.CineJunction.logout) {
           window.CineJunction.logout();
         }
       });
     }
 
-    // Connect Search bar input enter key
-    const searchInput = document.getElementById('global-search-input');
+    var searchInput = document.getElementById('global-search-input');
     if (searchInput) {
-      searchInput.addEventListener('keydown', (e) => {
+      searchInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
-          const query = searchInput.value.trim();
+          var query = searchInput.value.trim();
           if (query) {
-            const pathname = window.location.pathname;
-            const isInPages = pathname.includes('/pages/');
-            const searchPageLink = isInPages ? 'search.html' : 'pages/search.html';
-            window.location.href = `${searchPageLink}?q=${encodeURIComponent(query)}`;
+            var pathname = window.location.pathname;
+            var isInPages = pathname.indexOf('/pages/') !== -1;
+            var searchPageLink = isInPages ? 'search.html' : 'pages/search.html';
+            window.location.href = searchPageLink + '?q=' + encodeURIComponent(query);
           }
         }
       });
     }
 
-    // Run active link highlighting and profile updates
     if (window.CineJunction.initUtilities) {
       window.CineJunction.initUtilities();
+    }
+
+    if (window.CineJunction.updateAuthUI) {
+      window.CineJunction.updateAuthUI();
     }
   }
 

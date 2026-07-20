@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.time.Instant;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,8 @@ class GenreRepositoryTest {
     void saveGenre_ReturnsSavedGenre() {
         Genre genre = new Genre();
         genre.setName("Action");
+        genre.setCreatedAt(Instant.now());
+        genre.setUpdatedAt(Instant.now());
 
         Genre saved = genreRepository.save(genre);
 
@@ -33,6 +36,8 @@ class GenreRepositoryTest {
     void findByNameIgnoreCase_ReturnsGenre() {
         Genre genre = new Genre();
         genre.setName("Action");
+        genre.setCreatedAt(Instant.now());
+        genre.setUpdatedAt(Instant.now());
         genreRepository.save(genre);
 
         Optional<Genre> found = genreRepository.findByNameIgnoreCase("Action");
@@ -45,6 +50,8 @@ class GenreRepositoryTest {
     void existsByNameIgnoreCase_ReturnsTrue() {
         Genre genre = new Genre();
         genre.setName("Action");
+        genre.setCreatedAt(Instant.now());
+        genre.setUpdatedAt(Instant.now());
         genreRepository.save(genre);
 
         boolean exists = genreRepository.existsByNameIgnoreCase("Action");

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,6 +23,14 @@ public interface MovieRepository extends JpaRepository<Movie, Long>, JpaSpecific
      * @return an {@link Optional} containing the movie, or empty if not found
      */
     Optional<Movie> findByTitleIgnoreCase(String title);
+
+    /**
+     * Finds all movies by their title, ignoring case.
+     *
+     * @param title the movie title
+     * @return a {@link List} of matching movies
+     */
+    List<Movie> findAllByTitleIgnoreCase(String title);
 
     /**
      * Checks whether a movie with the given title exists, ignoring case.
