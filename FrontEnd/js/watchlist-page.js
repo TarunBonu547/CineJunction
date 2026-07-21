@@ -8,32 +8,10 @@
     custom: 'cinejunction.lists.custom'
   };
 
-  // Helper to load list from storage
   function getList(key) {
     const raw = window.localStorage.getItem(key);
     if (raw) {
       try { return JSON.parse(raw); } catch(e) {}
-    }
-    // Initialize defaults
-    if (key === LISTS.favorites) {
-      const def = ["the-last-horizon", "ruin-rose"];
-      window.localStorage.setItem(key, JSON.stringify(def));
-      return def;
-    }
-    if (key === LISTS.watchlist) {
-      const def = ["midnight-tides", "velvet-silence", "aether-bloom"];
-      window.localStorage.setItem(key, JSON.stringify(def));
-      return def;
-    }
-    if (key === LISTS.recently) {
-      const def = ["glass-meridian", "northbound-light", "kintsugi"];
-      window.localStorage.setItem(key, JSON.stringify(def));
-      return def;
-    }
-    if (key === LISTS.custom) {
-      const def = { "Late Night Mood": ["midnight-tides", "velvet-silence"] };
-      window.localStorage.setItem(key, JSON.stringify(def));
-      return def;
     }
     return [];
   }
@@ -42,8 +20,8 @@
     window.localStorage.setItem(key, JSON.stringify(val));
   }
 
-  let activeTab = 'watchlist'; // default tab
-  let activeCustomListName = null; // if viewing a specific custom list
+  let activeTab = 'watchlist';
+  let activeCustomListName = null;
 
   function renderListContent() {
     const contentArea = document.getElementById('lists-content-area');
@@ -61,10 +39,6 @@
       movieIds = getList(LISTS.recently);
     } else if (activeTab === 'top-rated') {
       isTopRated = true;
-      // Get all movies in mockData with rating >= 8.5
-      const movies = window.CineJunction.mockData.movies;
-      const topMovies = movies.filter(m => parseFloat(m.imdbRating) >= 8.5);
-      movieIds = topMovies.map(m => m.id);
     } else if (activeTab === 'custom') {
       isCustom = true;
     }
@@ -74,7 +48,6 @@
       return;
     }
 
-    // Standard Grid View
     if (!movieIds || movieIds.length === 0) {
       contentArea.innerHTML = `
         <div class="empty-state">
@@ -86,27 +59,22 @@
       return;
     }
 
-    // Fetch movies from mockData
-    const allMovies = window.CineJunction.mockData.movies;
-    const filteredMovies = allMovies.filter(m => movieIds.includes(m.id));
-
     contentArea.innerHTML = `
       <div class="movie-grid">
-        ${filteredMovies.map(movie => `
-          <article class="movie-card discovery-card" data-movie-id="${movie.id}">
+        ${movieIds.map(id => `
+          <article class="movie-card discovery-card" data-movie-id="${id}">
             <div class="movie-card__image">
-              <img src="${movie.posterUrl}" alt="${movie.title} poster" />
+              <div style="aspect-ratio: 2/3; background: var(--surface); border-radius: 8px;"></div>
             </div>
             <div class="movie-card__body">
               <div class="movie-card__meta">
-                <span class="meta-pill">IMDb ${movie.imdbRating}</span>
-                <span class="meta-pill">CJ ${movie.cjRating}</span>
+                <span class="meta-pill">ID ${id}</span>
               </div>
-              <h3 class="movie-title">${movie.title}</h3>
-              <p class="body-text">${movie.genres.join(' • ')} • ${movie.year}</p>
+              <h3 class="movie-title">Saved Title</h3>
+              <p class="body-text">Open details to view</p>
               <div class="card-actions" style="margin-top: 12px;">
-                <button class="btn btn-outline" type="button" onclick="window.location.href='movie-details.html?id=${movie.id}'">Details</button>
-                ${isTopRated ? '' : `<button class="btn btn-danger remove-item-btn" type="button" data-movie-id="${movie.id}">Remove</button>`}
+                <button class="btn btn-outline" type="button" onclick="window.location.href='movie-details.html?id=${id}'">Details</button>
+                <button class="btn btn-danger remove-item-btn" type="button" data-movie-id="${id}">Remove</button>
               </div>
             </div>
           </article>
@@ -114,7 +82,6 @@
       </div>
     `;
 
-    // Bind remove button actions
     contentArea.querySelectorAll('.remove-item-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -142,13 +109,10 @@
     const listNames = Object.keys(customLists);
 
     if (activeCustomListName) {
-      // View movies inside specific custom list
       const movieIds = customLists[activeCustomListName] || [];
-      const allMovies = window.CineJunction.mockData.movies;
-      const filteredMovies = allMovies.filter(m => movieIds.includes(m.id));
 
       let innerContent = '';
-      if (filteredMovies.length === 0) {
+      if (movieIds.length === 0) {
         innerContent = `
           <div class="empty-state" style="border: 0; padding: 20px 0;">
             <h4>This list is empty</h4>
@@ -158,21 +122,20 @@
       } else {
         innerContent = `
           <div class="movie-grid">
-            ${filteredMovies.map(movie => `
-              <article class="movie-card discovery-card" data-movie-id="${movie.id}">
+            ${movieIds.map(id => `
+              <article class="movie-card discovery-card" data-movie-id="${id}">
                 <div class="movie-card__image">
-                  <img src="${movie.posterUrl}" alt="${movie.title} poster" />
+                  <div style="aspect-ratio: 2/3; background: var(--surface); border-radius: 8px;"></div>
                 </div>
                 <div class="movie-card__body">
                   <div class="movie-card__meta">
-                    <span class="meta-pill">IMDb ${movie.imdbRating}</span>
-                    <span class="meta-pill">CJ ${movie.cjRating}</span>
+                    <span class="meta-pill">ID ${id}</span>
                   </div>
-                  <h3 class="movie-title">${movie.title}</h3>
-                  <p class="body-text">${movie.genres.join(' • ')} • ${movie.year}</p>
+                  <h3 class="movie-title">Saved Title</h3>
+                  <p class="body-text">Open details to view</p>
                   <div class="card-actions" style="margin-top: 12px;">
-                    <button class="btn btn-outline" type="button" onclick="window.location.href='movie-details.html?id=${movie.id}'">Details</button>
-                    <button class="btn btn-danger remove-custom-item-btn" type="button" data-movie-id="${movie.id}">Remove</button>
+                    <button class="btn btn-outline" type="button" onclick="window.location.href='movie-details.html?id=${id}'">Details</button>
+                    <button class="btn btn-danger remove-custom-item-btn" type="button" data-movie-id="${id}">Remove</button>
                   </div>
                 </div>
               </article>
@@ -227,7 +190,6 @@
       return;
     }
 
-    // Default: List of custom lists
     let listContent = '';
     if (listNames.length === 0) {
       listContent = `
@@ -263,7 +225,6 @@
       ${listContent}
     `;
 
-    // Bind item click
     container.querySelectorAll('.custom-list-item-card').forEach(card => {
       card.addEventListener('click', () => {
         activeCustomListName = card.dataset.listName;
@@ -271,7 +232,6 @@
       });
     });
 
-    // Bind Create Custom List button
     document.getElementById('create-custom-list-btn').addEventListener('click', () => {
       const name = prompt("Enter list name:");
       if (name && name.trim()) {
@@ -294,7 +254,6 @@
     const main = document.querySelector('main');
     if (!main) return;
 
-    // Change template main structure to support the tab panel
     main.innerHTML = `
       <section class="info-card" style="margin-bottom: 24px; padding: 24px;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
@@ -317,7 +276,6 @@
       <div id="lists-content-area" style="min-height: 200px;"></div>
     `;
 
-    // Style cleanups: Make sure tab buttons act like tabs
     const tabRow = document.getElementById('watchlist-tabs');
     tabRow.querySelectorAll('.tab').forEach(btn => {
       btn.style.cursor = 'pointer';
@@ -325,7 +283,7 @@
       btn.style.fontFamily = 'inherit';
       btn.style.fontSize = 'var(--fs-sm)';
       btn.style.fontWeight = 'var(--weight-medium)';
-      
+
       btn.addEventListener('click', () => {
         tabRow.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
         btn.classList.add('tab-active');
@@ -338,17 +296,13 @@
     renderListContent();
   }
 
-  function tryInit(attempts) {
-    if (window.CineJunction?.mockData?.movies) {
-      initWatchlistPage();
-    } else if (attempts > 0) {
-      window.setTimeout(() => tryInit(attempts - 1), 50);
-    }
+  function initWatchlistPageDirect() {
+    initWatchlistPage();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => tryInit(20));
+    document.addEventListener('DOMContentLoaded', initWatchlistPageDirect);
   } else {
-    tryInit(20);
+    initWatchlistPageDirect();
   }
 })();

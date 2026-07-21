@@ -1,25 +1,6 @@
 (function () {
   window.CineJunction = window.CineJunction || {};
 
-  const state = {
-  movies: [],
-  currentPage: 0,
-  totalPages: 0,
-  totalElements: 0,
-
-  sort: "popularity,desc",
-  searchQuery: "",
-
-  genre: "",
-  language: "",
-  year: "",
-  minRating: "",
-  status: "",
-
-  isLoading: false,
-  error: null
-};
-
   const POSTER_PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450"><rect width="100%" height="100%" fill="%2318181B"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23A1A1AA" font-family="sans-serif" font-size="14">No Image</text></svg>');
 
   const WatchlistService = {
@@ -41,38 +22,32 @@
     has(movieId) { return this.get().includes(movieId); }
   };
 
-  function getPageType() {
-    const pathname = window.location.pathname;
-    const page = pathname.split('/').pop() || '';
-    if (page.includes('tv-show')) return 'tv';
-    if (page.includes('anime')) return 'anime';
-    if (page.includes('trending')) return 'trending';
-    return 'movie';
-  }
+  const state = {
+    items: [],
+    currentPage: 0,
+    totalPages: 0,
+    totalElements: 0,
+    searchQuery: "",
+    sort: "popularity,desc",
+    genre: "",
+    language: "",
+    minRating: "",
+    isLoading: false,
+    error: null
+  };
 
   function getSortValue(selectText) {
     switch (selectText) {
       case 'Trending': return 'popularity,desc';
       case 'Popularity': return 'popularity,desc';
-      case 'IMDb Rating': return 'averageRating,desc';
-      case 'CineJunction Score': return 'averageRating,desc';
       case 'Release Date': return 'releaseDate,desc';
-      default: return 'averageRating,desc';
+      default: return 'popularity,desc';
     }
   }
 
   function getRatingFilter(chipText) {
     const match = chipText.match(/(\d+)/);
     return match ? match[1] : '';
-  }
-
-  function getStatusFilter(chipText) {
-    switch (chipText.toLowerCase()) {
-      case 'streaming': return 'RELEASED';
-      case 'rent': return '';
-      case 'theater': return 'UPCOMING';
-      default: return '';
-    }
   }
 
   function showLoading() {
@@ -87,9 +62,9 @@
     if (grid) {
       grid.innerHTML = `
         <div class="empty-state" style="grid-column: 1 / -1;">
-          <h4>Unable to load movies</h4>
+          <h4>Unable to load anime</h4>
           <p>${message || 'Please check your connection and try again.'}</p>
-          <button class="btn btn-primary" type="button" onclick="window.CineJunction.moviesPage?.retry?.()">Retry</button>
+          <button class="btn btn-primary" type="button" onclick="window.CineJunction.animePage?.retry?.()">Retry</button>
         </div>
       `;
     }
@@ -100,7 +75,7 @@
     if (grid) {
       grid.innerHTML = `
         <div class="empty-state" style="grid-column: 1 / -1;">
-          <h4>No titles found</h4>
+          <h4>No anime found</h4>
           <p>${message || 'Try adjusting your filters or search terms.'}</p>
         </div>
       `;
@@ -108,9 +83,9 @@
   }
 
   function formatYear(dateInput) {
-    if (!dateInput) return 'N/A';
+    if (!dateInput) return 'Unknown';
     const date = new Date(dateInput);
-    if (isNaN(date.getTime())) return 'N/A';
+    if (isNaN(date.getTime())) return 'Unknown';
     return date.getFullYear();
   }
 
@@ -139,7 +114,7 @@
     `;
   }
 
-  function renderMovies(movies) {
+  function renderAnime(movies) {
     const grid = document.querySelector('.movie-grid');
     if (!grid) return;
 
@@ -196,11 +171,11 @@
     }
 
     pagesHtml += `<button class="btn btn-ghost" type="button" data-page="${page - 1}" ${page === 0 ? 'disabled' : ''}>Previous</button>`;
-    
+
     for (let i = startPage; i <= endPage; i++) {
       pagesHtml += `<button class="btn ${i === page ? 'btn-primary' : 'btn-outline'}" type="button" data-page="${i}">${i + 1}</button>`;
     }
-    
+
     pagesHtml += `<button class="btn btn-ghost" type="button" data-page="${page + 1}" ${page >= totalPages - 1 ? 'disabled' : ''}>Next</button>`;
 
     pagination.innerHTML = `
@@ -214,13 +189,13 @@
         const targetPage = parseInt(btn.dataset.page, 10);
         if (!isNaN(targetPage) && targetPage >= 0 && targetPage < totalPages) {
           state.currentPage = targetPage;
-          fetchMovies();
+          fetchAnime();
         }
       });
     });
   }
 
-  async function fetchMovies(reset = true) {
+  async function fetchAnime(reset = true) {
     if (state.isLoading) return;
     state.isLoading = true;
     state.error = null;
@@ -239,32 +214,31 @@
 
       if (state.genre) params.genre = state.genre;
       if (state.language) params.language = state.language;
-      if (state.year) params.year = state.year;
       if (state.minRating) params.minRating = state.minRating;
 
-      console.log('[Movies] Fetching movies with params:', params);
+      console.log('[Anime] Fetching...', params);
       const response = await window.CineJunction.movieService.getMovies(params);
-      console.log('[Movies] API Success. Total elements:', response.totalElements);
+      console.log('[Anime] API Success. Total elements:', response.totalElements);
 
-      state.movies = response.content || [];
+      state.items = response.content || [];
       state.totalPages = response.totalPages || 0;
       state.totalElements = response.totalElements || 0;
 
-      if (state.movies.length === 0) {
-        showEmpty('No movies match your current filters.');
+      if (state.items.length === 0) {
+        showEmpty('No anime match your current filters.');
       } else {
-        renderMovies(state.movies);
+        renderAnime(state.items);
         renderPagination(state.currentPage, state.totalPages, state.totalElements);
       }
 
     } catch (error) {
-      console.error('[Movies] API Error:', error);
+      console.error('[Anime] API Error:', error);
       state.error = error;
       if (error.status === 401) {
         const isInPages = window.location.pathname.indexOf('/pages/') !== -1;
         window.location.href = (isInPages ? 'login.html' : 'pages/login.html');
       } else if (error.status === 404) {
-        showEmpty('No movies found.');
+        showEmpty('No anime found.');
       } else {
         showError(error.message || 'Network error. Please try again.');
       }
@@ -283,23 +257,23 @@
     showLoading();
 
     try {
-      console.log('[Movies] Searching for:', query);
+      console.log('[Anime] Searching for:', query);
       const response = await window.CineJunction.movieService.searchMovies(query, state.currentPage, 12);
-      console.log('[Movies] Search API Success. Results:', response.totalElements);
+      console.log('[Anime] Search API Success. Results:', response.totalElements);
 
-      state.movies = response.content || [];
+      state.items = response.content || [];
       state.totalPages = response.totalPages || 0;
       state.totalElements = response.totalElements || 0;
 
-      if (state.movies.length === 0) {
-        showEmpty('No movies match your search.');
+      if (state.items.length === 0) {
+        showEmpty('No anime match your search.');
       } else {
-        renderMovies(state.movies);
+        renderAnime(state.items);
         renderPagination(state.currentPage, state.totalPages, state.totalElements);
       }
 
     } catch (error) {
-      console.error('[Movies] Search API Error:', error);
+      console.error('[Anime] Search API Error:', error);
       state.error = error;
       if (error.status === 401) {
         const isInPages = window.location.pathname.indexOf('/pages/') !== -1;
@@ -313,7 +287,7 @@
   }
 
   function bindEvents() {
-    const searchInput = document.getElementById('movie-search');
+    const searchInput = document.getElementById('anime-search');
     const sortSelect = document.querySelector('.sort-shell select');
     const chipRows = document.querySelectorAll('.chip-row');
 
@@ -328,7 +302,7 @@
             performSearch(query);
           } else {
             state.searchQuery = '';
-            fetchMovies();
+            fetchAnime();
           }
         }, 300);
       });
@@ -337,7 +311,7 @@
     if (sortSelect) {
       sortSelect.addEventListener('change', (e) => {
         state.sort = getSortValue(e.target.value);
-        fetchMovies();
+        fetchAnime();
       });
     }
 
@@ -349,9 +323,7 @@
           group.querySelectorAll('.chip').forEach(item => item.classList.remove('is-active'));
           chip.classList.add('is-active');
 
-          const filterGroup = chip.closest('.filter-group');
-        const groupTitle =
-                  filterGroup?.querySelector('h3')?.textContent?.toLowerCase() || '';
+          const groupTitle = group.querySelector('h3')?.textContent?.toLowerCase() || '';
           const chipText = chip.textContent.trim();
 
           if (groupTitle.includes('genre')) {
@@ -360,26 +332,24 @@
             state.language = chipText === 'All' ? '' : chipText;
           } else if (groupTitle.includes('rating')) {
             state.minRating = chipText === 'All' ? '' : getRatingFilter(chipText);
-          } else if (groupTitle.includes('availability')) {
-            state.status = chipText === 'All' ? '' : getStatusFilter(chipText);
           }
 
-          fetchMovies();
+          fetchAnime();
         });
       });
     });
   }
 
   async function initPage() {
-    console.log('[Movies] Loading...');
+    console.log('[Anime] Loading...');
     bindEvents();
-    await fetchMovies();
-    console.log('[Movies] Completed');
+    await fetchAnime();
+    console.log('[Anime] Completed');
   }
 
-  window.CineJunction.moviesPage = {
+  window.CineJunction.animePage = {
     init: initPage,
-    retry: () => fetchMovies()
+    retry: () => fetchAnime()
   };
 
   if (document.readyState === 'loading') {

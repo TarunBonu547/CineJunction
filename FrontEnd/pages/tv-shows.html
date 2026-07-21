@@ -96,31 +96,14 @@
           </label>
         </div>
 
-        <div class="movie-grid">
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Velvet Silence poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.3</span><span class="meta-pill">CJ 8.9</span></div>
-              <h3 class="movie-title">Velvet Silence</h3>
-              <p class="body-text">Drama • 2025 • 8 Episodes</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Northbound Light poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.0</span><span class="meta-pill">CJ 8.5</span></div>
-              <h3 class="movie-title">Northbound Light</h3>
-              <p class="body-text">Mystery • 2024 • 10 Episodes</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
+        <div class="movie-grid" data-movie-grid>
+          <p class="body-text section-loading" style="grid-column: 1 / -1; text-align: center; padding: 48px;">Loading…</p>
+        </div>
+
+        <div class="pagination" aria-label="Pagination" style="display: none;">
+          <button class="btn btn-ghost" type="button">Previous</button>
+          <div class="pagination__pages" aria-label="Page numbers"></div>
+          <button class="btn btn-ghost" type="button">Next</button>
         </div>
       </section>
     </div>
@@ -161,11 +144,14 @@
     </div>
   </footer>
 
-  <script src="../js/mock-data.js" defer></script>
-  <script src="../js/auth.js" defer></script>
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/navigation.js" defer></script>
-  <script src="../js/search.js" defer></script>
-  <script src="../js/movies.js" defer></script>
+  <script src="../js/config.js" defer></script>
+<script src="../js/api.js" defer></script>
+<script src="../js/movieService.js" defer></script>
+
+<script src="../js/auth.js" defer></script>
+<script src="../js/utils.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/tv-shows.js" defer></script>
 </body>
 </html>

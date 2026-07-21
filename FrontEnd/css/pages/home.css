@@ -108,3 +108,10 @@
         max-width: 280px;
     }
 }
+
+.section-loading {
+    color: var(--text-secondary);
+    padding: 24px;
+    text-align: center;
+    grid-column: 1 / -1;
+}

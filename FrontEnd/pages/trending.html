@@ -56,34 +56,24 @@
       </div>
     </section>
 
-    <div class="container discovery-layout">
-      <section class="discovery-content discovery-content--wide" aria-label="Trending catalogue">
-        <div class="movie-row-section">
-          <div class="section-heading">
-            <div>
-              <p class="section-label">01</p>
-              <h2 class="section-title">Trending Today</h2>
-            </div>
-            <a class="section-link" href="#">See All</a>
+    <div class="container discovery-layout discovery-layout--full">
+      <section class="discovery-content" aria-label="Trending catalogue">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">01</p>
+            <h2 class="section-title">Trending Today</h2>
           </div>
-          <div class="card-row">
-            <article class="movie-card discovery-card">
-              <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Glass Meridian poster" /></div>
-              <div class="movie-card__body">
-                <div class="movie-card__meta"><span class="meta-pill">IMDb 8.3</span><span class="meta-pill">CJ 8.9</span></div>
-                <h3 class="movie-title">Glass Meridian</h3>
-                <p class="body-text">Mystery • 2026 • 1h 56m</p>
-              </div>
-            </article>
-            <article class="movie-card discovery-card">
-              <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Northbound Light poster" /></div>
-              <div class="movie-card__body">
-                <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">CJ 8.7</span></div>
-                <h3 class="movie-title">Northbound Light</h3>
-                <p class="body-text">Adventure • 2025 • 1h 48m</p>
-              </div>
-            </article>
-          </div>
+          <a class="section-link" href="#">See All</a>
+        </div>
+
+        <div class="movie-grid" data-movie-grid>
+          <p class="body-text section-loading" style="grid-column: 1 / -1; text-align: center; padding: 48px;">Loading…</p>
+        </div>
+
+        <div class="pagination" aria-label="Pagination" style="display: none;">
+          <button class="btn btn-ghost" type="button">Previous</button>
+          <div class="pagination__pages" aria-label="Page numbers"></div>
+          <button class="btn btn-ghost" type="button">Next</button>
         </div>
       </section>
     </div>
@@ -124,11 +114,13 @@
     </div>
   </footer>
 
-  <script src="../js/mock-data.js" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/movieService.js" defer></script>
   <script src="../js/auth.js" defer></script>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
   <script src="../js/search.js" defer></script>
-  <script src="../js/movies.js" defer></script>
+  <script src="../js/trending.js" defer></script>
 </body>
 </html>

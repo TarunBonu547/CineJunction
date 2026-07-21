@@ -88,31 +88,14 @@
           </label>
         </div>
 
-        <div class="movie-grid">
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Aether Bloom poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.6</span><span class="meta-pill">CJ 9.0</span></div>
-              <h3 class="movie-title">Aether Bloom</h3>
-              <p class="body-text">Fantasy • 2026 • 2h 05m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="The Last Horizon poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.2</span><span class="meta-pill">CJ 8.7</span></div>
-              <h3 class="movie-title">The Last Horizon</h3>
-              <p class="body-text">Action • 2025 • 2h 01m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
+        <div class="movie-grid" data-movie-grid>
+          <p class="body-text section-loading" style="grid-column: 1 / -1; text-align: center; padding: 48px;">Loading…</p>
+        </div>
+
+        <div class="pagination" aria-label="Pagination" style="display: none;">
+          <button class="btn btn-ghost" type="button">Previous</button>
+          <div class="pagination__pages" aria-label="Page numbers"></div>
+          <button class="btn btn-ghost" type="button">Next</button>
         </div>
       </section>
     </div>
@@ -153,11 +136,14 @@
     </div>
   </footer>
 
-  <script src="../js/mock-data.js" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/movieService.js" defer></script>
+
   <script src="../js/auth.js" defer></script>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
   <script src="../js/search.js" defer></script>
-  <script src="../js/movies.js" defer></script>
+  <script src="../js/anime.js" defer></script>
 </body>
 </html>

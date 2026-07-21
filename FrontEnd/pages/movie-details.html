@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CineJunction | Movie Details</title>
-  <meta name="description" content="A premium, cinematic movie details experience for The Last Horizon." />
+  <meta name="description" content="A premium, cinematic movie details experience." />
   <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body class="movie-details-page">
@@ -45,22 +45,22 @@
   <main id="main" tabindex="-1">
     <section class="movie-hero" aria-labelledby="movie-title">
       <div class="movie-hero__backdrop" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=80" alt="" />
+        <div style="width: 100%; height: 100%; background: var(--surface);"></div>
       </div>
       <div class="container movie-hero__content">
         <div class="movie-hero__poster">
-          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="The Last Horizon movie poster" />
+          <div style="aspect-ratio: 2/3; background: var(--surface); border-radius: 12px;"></div>
         </div>
         <div class="movie-hero__copy">
           <p class="eyebrow">Featured Premiere</p>
-          <h1 class="hero-title" id="movie-title" data-hero-title>The Last Horizon</h1>
-          <p class="hero-tagline" data-hero-tagline>A signal at the edge of the ocean rewrites the map of memory.</p>
+          <h1 class="hero-title" id="movie-title" data-hero-title>Loading…</h1>
+          <p class="hero-tagline" data-hero-tagline>Loading…</p>
           <ul class="meta-list" aria-label="Movie metadata">
-            <li><span class="meta-pill" data-hero-year>2026</span></li>
-            <li><span class="meta-pill" data-hero-runtime>2h 12m</span></li>
-            <li><span class="meta-pill" data-hero-genre>Sci-Fi</span></li>
-            <li><span class="meta-pill" data-hero-language>English</span></li>
-            <li><span class="meta-pill" data-hero-rating>PG-13</span></li>
+            <li><span class="meta-pill" data-hero-year>N/A</span></li>
+            <li><span class="meta-pill" data-hero-runtime>N/A</span></li>
+            <li><span class="meta-pill" data-hero-genre>N/A</span></li>
+            <li><span class="meta-pill" data-hero-language>N/A</span></li>
+            <li><span class="meta-pill" data-hero-rating>N/A</span></li>
           </ul>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#">Watch Trailer</a>
@@ -144,38 +144,7 @@
         <a class="section-link" href="#">View Full Credits</a>
       </div>
       <div class="person-grid">
-        <article class="person-card">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Portrait of Mina Kade" />
-          <div class="person-card__body">
-            <h3 class="movie-title">Mina Kade</h3>
-            <p class="body-text">Director</p>
-            <span class="meta-pill">The Last Horizon</span>
-          </div>
-        </article>
-        <article class="person-card">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Portrait of Eli Mercer" />
-          <div class="person-card__body">
-            <h3 class="movie-title">Eli Mercer</h3>
-            <p class="body-text">Lead Actor</p>
-            <span class="meta-pill">Noah Voss</span>
-          </div>
-        </article>
-        <article class="person-card">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Portrait of Lina Ford" />
-          <div class="person-card__body">
-            <h3 class="movie-title">Lina Ford</h3>
-            <p class="body-text">Composer</p>
-            <span class="meta-pill">Original Score</span>
-          </div>
-        </article>
-        <article class="person-card">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Portrait of Jonah Stein" />
-          <div class="person-card__body">
-            <h3 class="movie-title">Jonah Stein</h3>
-            <p class="body-text">Cinematographer</p>
-            <span class="meta-pill">Visual Language</span>
-          </div>
-        </article>
+        <p class="body-text" style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">No cast information available.</p>
       </div>
     </section>
 
@@ -188,27 +157,7 @@
         <a class="section-link" href="#">Open Full Gallery</a>
       </div>
       <div class="gallery-grid">
-        <button class="gallery-card" type="button" data-media-type="image" data-media-src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1200&q=80" data-media-title="Official Poster">
-          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Movie poster tile" />
-          <div class="gallery-card__body">
-            <h3 class="movie-title">Official Poster</h3>
-            <p class="body-text">Key art</p>
-          </div>
-        </button>
-        <button class="gallery-card" type="button" data-media-type="image" data-media-src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" data-media-title="Production Still">
-          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="Production still" />
-          <div class="gallery-card__body">
-            <h3 class="movie-title">Production Still</h3>
-            <p class="body-text">Behind the lens</p>
-          </div>
-        </button>
-        <button class="gallery-card" type="button" data-media-type="video" data-media-src="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1" data-media-title="Official Trailer">
-          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Trailer preview" />
-          <div class="gallery-card__body">
-            <h3 class="movie-title">Official Trailer</h3>
-            <p class="body-text">Teaser experience</p>
-          </div>
-        </button>
+        <p class="body-text" style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">No media gallery available.</p>
       </div>
       <div class="modal" id="media-modal" role="dialog" aria-modal="true" aria-label="Media viewer" hidden>
         <button class="modal__close" type="button" aria-label="Close media viewer">×</button>
@@ -381,30 +330,7 @@
         <a class="section-link" href="#">See All</a>
       </div>
       <div class="card-row">
-        <article class="movie-card">
-          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Velvet Silence poster" /></div>
-          <div class="movie-card__body">
-            <div class="movie-card__meta"><span class="meta-pill">IMDb 7.9</span><span class="meta-pill">Drama</span></div>
-            <h3 class="movie-title">Velvet Silence</h3>
-            <p class="body-text">A graceful portrait of grief and memory.</p>
-          </div>
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Aether Bloom poster" /></div>
-          <div class="movie-card__body">
-            <div class="movie-card__meta"><span class="meta-pill">IMDb 8.4</span><span class="meta-pill">Fantasy</span></div>
-            <h3 class="movie-title">Aether Bloom</h3>
-            <p class="body-text">A luminous journey through ritual and renewal.</p>
-          </div>
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Midnight Tides poster" /></div>
-          <div class="movie-card__body">
-            <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">Thriller</span></div>
-            <h3 class="movie-title">Midnight Tides</h3>
-            <p class="body-text">A citywide blackout reveals a hidden pattern.</p>
-          </div>
-        </article>
+        <p class="body-text" style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">No related movies available.</p>
       </div>
     </section>
   </main>
@@ -444,24 +370,9 @@
     </div>
   </footer>
 
-  <script type="application/json" id="movie-data">
-    {
-      "movie": {
-        "title": "The Last Horizon",
-        "tagline": "A signal at the edge of the ocean rewrites the map of memory.",
-        "year": 2026,
-        "runtime": "2h 12m",
-        "genre": "Sci-Fi",
-        "language": "English",
-        "ageRating": "PG-13",
-        "imdbRating": "8.7",
-        "cjRating": "9.2",
-        "popularityScore": "91%",
-        "director": "Mina Kade"
-      }
-    }
-  </script>
-  <script src="../js/mock-data.js" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/movieService.js" defer></script>
   <script src="../js/auth.js" defer></script>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>

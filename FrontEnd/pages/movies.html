@@ -115,63 +115,12 @@
         </div>
 
         <div class="movie-grid" data-movie-grid>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Aether Bloom poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.4</span><span class="meta-pill">CJ 9.1</span></div>
-              <h3 class="movie-title">Aether Bloom</h3>
-              <p class="body-text">Fantasy • 2026 • 2h 06m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="Midnight Tides poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.1</span><span class="meta-pill">CJ 8.8</span></div>
-              <h3 class="movie-title">Midnight Tides</h3>
-              <p class="body-text">Thriller • 2025 • 1h 50m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Velvet Silence poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 7.9</span><span class="meta-pill">CJ 8.3</span></div>
-              <h3 class="movie-title">Velvet Silence</h3>
-              <p class="body-text">Drama • 2024 • 1h 58m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card discovery-card">
-            <div class="movie-card__image"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="The Last Horizon poster" /></div>
-            <div class="movie-card__body">
-              <div class="movie-card__meta"><span class="meta-pill">IMDb 8.7</span><span class="meta-pill">CJ 9.4</span></div>
-              <h3 class="movie-title">The Last Horizon</h3>
-              <p class="body-text">Sci-Fi • 2026 • 2h 12m</p>
-              <div class="card-actions">
-                <button class="btn btn-outline" type="button">Bookmark</button>
-                <button class="btn btn-icon" type="button" aria-label="Like">♡</button>
-              </div>
-            </div>
-          </article>
+          <p class="body-text section-loading" style="grid-column: 1 / -1; text-align: center; padding: 48px;">Loading…</p>
         </div>
 
-        <div class="pagination" aria-label="Pagination">
+        <div class="pagination" aria-label="Pagination" style="display: none;">
           <button class="btn btn-ghost" type="button">Previous</button>
-          <div class="pagination__pages" aria-label="Page numbers">
-            <button class="btn btn-primary" type="button">1</button>
-            <button class="btn btn-outline" type="button">2</button>
-            <button class="btn btn-outline" type="button">3</button>
-          </div>
+          <div class="pagination__pages" aria-label="Page numbers"></div>
           <button class="btn btn-ghost" type="button">Next</button>
         </div>
       </section>
@@ -213,11 +162,14 @@
     </div>
   </footer>
 
-  <script src="../js/mock-data.js" defer></script>
-  <script src="../js/auth.js" defer></script>
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/navigation.js" defer></script>
-  <script src="../js/search.js" defer></script>
-  <script src="../js/movies.js" defer></script>
+  <script src="../js/config.js" defer></script>
+<script src="../js/api.js" defer></script>
+<script src="../js/movieService.js" defer></script>
+
+<script src="../js/auth.js" defer></script>
+<script src="../js/utils.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/movies.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,5 @@
 (function () {
   const suggestions = [
-    'The Last Horizon',
-    'Velvet Silence',
-    'Midnight Tides',
-    'Aether Bloom',
-    'Northbound Light',
     'Watchlist',
     'Community Picks',
     'Top Rated'

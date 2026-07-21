@@ -57,6 +57,10 @@ body.discovery-page {
     padding-top: 32px;
 }
 
+.discovery-layout--full {
+    grid-template-columns: 1fr;
+}
+
 .filter-panel {
     align-self: start;
     display: grid;

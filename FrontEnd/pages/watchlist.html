@@ -49,11 +49,16 @@
   </header>
 
   <main class="page-shell container content-section" tabindex="-1">
-    <section class="empty-state" aria-labelledby="watchlist-title">
-      <p class="eyebrow">Watchlist</p>
-      <h1 class="hero-title" id="watchlist-title">Your saved stories are waiting.</h1>
-      <p class="body-text">The watchlist experience is prepared for personal lists, saved films, and future sync with your account.</p>
-      <a class="btn btn-primary" href="movies.html">Discover More</a>
+    <section class="watchlist-section" aria-labelledby="watchlist-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Watchlist</p>
+          <h1 class="hero-title" id="watchlist-title">Your saved stories.</h1>
+        </div>
+      </div>
+      <div class="watchlist-grid" data-movie-grid>
+        <p class="body-text section-loading" style="grid-column: 1 / -1; text-align: center; padding: 48px;">Loading…</p>
+      </div>
     </section>
   </main>
 
@@ -90,11 +95,14 @@
     </div>
   </footer>
 
-  <script src="../js/mock-data.js" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/movieService.js" defer></script>
+
   <script src="../js/auth.js" defer></script>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
   <script src="../js/search.js" defer></script>
-  <script src="../js/watchlist-page.js" defer></script>
+  <script src="../js/watchlist.js" defer></script>
 </body>
 </html>
