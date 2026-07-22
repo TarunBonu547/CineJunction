@@ -72,23 +72,32 @@
   }
 
   async function login(email, password) {
-    var data = await window.CineJunction.apiFetch('/api/auth/login', {
-      method: 'POST',
-      body: { email: email, password: password }
+    const data = await window.CineJunction.apiFetch('/api/auth/login', {
+        method: 'POST',
+        body: { email, password }
     });
 
-    var username = email.split('@')[0];
-    var authData = {
-      token: data.token,
-      user: {
-        fullName: username.replace(/[._-]+/g, ' '),
-        username: username,
-        email: email
-      }
+    // Temporarily store token so authenticated requests work
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        token: data.token
+    }));
+
+    // Fetch current user
+    const profile = await window.CineJunction.apiFetch('/api/users/me');
+
+    const authData = {
+        token: data.token,
+        user: {
+            id: profile.id,
+            fullName: profile.fullName,
+            username: profile.username,
+            email: profile.email
+        }
     };
+
     setStoredAuth(authData);
     return authData;
-  }
+}
 
   async function register(fullName, username, email, password) {
     var data = await window.CineJunction.apiFetch('/api/auth/register', {

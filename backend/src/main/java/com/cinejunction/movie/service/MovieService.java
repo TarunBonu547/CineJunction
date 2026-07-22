@@ -1,5 +1,7 @@
 package com.cinejunction.movie.service;
 
+import com.cinejunction.movie.dto.search.MovieSearchRequest;
+import com.cinejunction.movie.dto.search.SearchSuggestionResponse;
 import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
@@ -8,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Service interface for managing movies.
@@ -85,4 +89,37 @@ public interface MovieService {
             Integer maxRuntime,
             Boolean adult,
             Pageable pageable);
+
+    /**
+     * Performs an advanced multi-filter search.
+     *
+     * @param request the search request containing all filters, sort, and pagination
+     * @return a page of movie summary responses
+     */
+    Page<MovieSummaryResponse> advancedSearch(MovieSearchRequest request);
+
+    /**
+     * Returns autocomplete suggestions for the given keyword.
+     *
+     * @param keyword the search keyword
+     * @return a list of search suggestions limited to 10 results
+     */
+    List<SearchSuggestionResponse> getSearchSuggestions(String keyword);
+
+    /**
+     * Retrieves recently released movies.
+     *
+     * @param monthsBack number of months to look back
+     * @param pageable   pagination information
+     * @return a page of movie summary responses
+     */
+    Page<MovieSummaryResponse> getRecentlyReleased(int monthsBack, Pageable pageable);
+
+    /**
+     * Retrieves trending movies sorted by popularity.
+     *
+     * @param pageable pagination information
+     * @return a page of movie summary responses
+     */
+    Page<MovieSummaryResponse> getTrendingMovies(Pageable pageable);
 }

@@ -44,7 +44,6 @@ public class Movie extends BaseEntity {
     @Column(nullable = false, length = 255)
     private String title;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String overview;
 

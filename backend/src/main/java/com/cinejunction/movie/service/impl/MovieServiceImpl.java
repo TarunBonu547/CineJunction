@@ -3,6 +3,8 @@ package com.cinejunction.movie.service.impl;
 import com.cinejunction.exception.MovieNotFoundException;
 import com.cinejunction.genre.entity.Genre;
 import com.cinejunction.genre.repository.GenreRepository;
+import com.cinejunction.movie.dto.search.MovieSearchRequest;
+import com.cinejunction.movie.dto.search.SearchSuggestionResponse;
 import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
@@ -14,13 +16,16 @@ import com.cinejunction.movie.service.MovieService;
 import com.cinejunction.movie.specification.MovieSpecification;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -129,6 +134,59 @@ public class MovieServiceImpl implements MovieService {
                 genre, language, year, status, minRating, maxRuntime, adult);
 
         return movieRepository.findAll(spec, pageable).map(movieMapper::toSummary);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<MovieSummaryResponse> advancedSearch(MovieSearchRequest request) {
+        int page = request.getPage() != null ? request.getPage() : 1;
+        int size = request.getSize() != null ? request.getSize() : 10;
+        String sortBy = request.getSortBy() != null ? request.getSortBy() : "popularity";
+        String sortDir = request.getSortDirection() != null ? request.getSortDirection() : "desc";
+
+        Sort.Direction direction = "asc".equalsIgnoreCase(sortDir) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(direction, sortBy));
+
+        Specification<Movie> spec = MovieSpecification.withAdvancedSearch(request);
+
+        return movieRepository.findAll(spec, pageable).map(movieMapper::toSummary);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<SearchSuggestionResponse> getSearchSuggestions(String keyword) {
+        Specification<Movie> spec = MovieSpecification.withSuggestionKeyword(keyword);
+        Pageable pageable = PageRequest.of(0, 10);
+
+        return movieRepository.findAll(spec, pageable).stream()
+                .map(movie -> SearchSuggestionResponse.builder()
+                        .title(movie.getTitle())
+                        .posterUrl(movie.getPosterUrl())
+                        .releaseYear(movie.getReleaseDate() != null ? movie.getReleaseDate().getYear() : null)
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<MovieSummaryResponse> getRecentlyReleased(int monthsBack, Pageable pageable) {
+        LocalDate cutoffDate = LocalDate.now().minusMonths(monthsBack);
+        Specification<Movie> spec = (root, query, cb) ->
+                cb.greaterThanOrEqualTo(root.get("releaseDate"), cutoffDate);
+
+        Sort sortByRelease = Sort.by(Sort.Direction.DESC, "releaseDate");
+        Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sortByRelease);
+
+        return movieRepository.findAll(spec, sortedPageable).map(movieMapper::toSummary);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<MovieSummaryResponse> getTrendingMovies(Pageable pageable) {
+        Sort sortByPopularity = Sort.by(Sort.Direction.DESC, "popularity");
+        Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sortByPopularity);
+
+        return movieRepository.findAll(sortedPageable).map(movieMapper::toSummary);
     }
 
     private MovieResponse buildMovieResponse(Movie movie) {

@@ -1,5 +1,7 @@
 package com.cinejunction.movie.controller;
 
+import com.cinejunction.movie.dto.search.MovieSearchRequest;
+import com.cinejunction.movie.dto.search.SearchSuggestionResponse;
 import com.cinejunction.movie.dto.MovieRequest;
 import com.cinejunction.movie.dto.MovieResponse;
 import com.cinejunction.movie.dto.MovieSummaryResponse;
@@ -22,11 +24,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/movies")
 @RequiredArgsConstructor
-@Tag(name = "Movies", description = "Movie management APIs")
+@Tag(name = "Movies", description = "Movie management and advanced search APIs")
 public class MovieController {
 
     private final MovieService movieService;
@@ -107,7 +110,7 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    @Operation(summary = "Search movies", description = "Searches movies by title keyword with pagination", parameters = {
+    @Operation(summary = "Search movies by title", description = "Searches movies by title keyword with pagination", parameters = {
             @Parameter(name = "keyword", description = "Search keyword for movie title", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "Inception")),
             @Parameter(name = "page", description = "Page number (0-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0")),
             @Parameter(name = "size", description = "Page size", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "20")),
@@ -120,6 +123,75 @@ public class MovieController {
             @RequestParam String keyword,
             @Parameter(hidden = true) Pageable pageable) {
         Page<MovieSummaryResponse> movies = movieService.searchMovies(keyword, pageable);
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/search/advanced")
+    @Operation(summary = "Advanced movie search", description = "Performs multi-criteria advanced search with filtering, sorting, and pagination", parameters = {
+            @Parameter(name = "keyword", description = "Search in title and overview", in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "genre", description = "Filter by genre name", in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "language", description = "Filter by language", in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "year", description = "Filter by release year", in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "minRating", description = "Filter by minimum average rating (0.0 - 10.0)", in = ParameterIn.QUERY, schema = @Schema(type = "number", format = "decimal")),
+            @Parameter(name = "maxRating", description = "Filter by maximum average rating (0.0 - 10.0)", in = ParameterIn.QUERY, schema = @Schema(type = "number", format = "decimal")),
+            @Parameter(name = "minRuntime", description = "Filter by minimum runtime in minutes", in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "maxRuntime", description = "Filter by maximum runtime in minutes", in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "status", description = "Filter by movie status", in = ParameterIn.QUERY, schema = @Schema(type = "string", allowableValues = {"UPCOMING", "IN_PRODUCTION", "POST_PRODUCTION", "RELEASED", "CANCELLED"})),
+            @Parameter(name = "adult", description = "Filter by adult content flag", in = ParameterIn.QUERY, schema = @Schema(type = "boolean")),
+            @Parameter(name = "sortBy", description = "Sort field", in = ParameterIn.QUERY, schema = @Schema(type = "string", allowableValues = {"title", "releaseDate", "averageRating", "popularity", "runtime"}, defaultValue = "popularity")),
+            @Parameter(name = "sortDirection", description = "Sort direction", in = ParameterIn.QUERY, schema = @Schema(type = "string", allowableValues = {"asc", "desc"}, defaultValue = "desc")),
+            @Parameter(name = "page", description = "Page number (1-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "1")),
+            @Parameter(name = "size", description = "Page size (max 50)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "10"))
+    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Advanced search results retrieved successfully", content = @Content(schema = @Schema(implementation = Page.class)))
+    })
+    public ResponseEntity<Page<MovieSummaryResponse>> advancedSearch(@Valid @ModelAttribute MovieSearchRequest request) {
+        Page<MovieSummaryResponse> movies = movieService.advancedSearch(request);
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/search/suggestions")
+    @Operation(summary = "Search suggestions", description = "Returns autocomplete suggestions based on title and overview", parameters = {
+            @Parameter(name = "keyword", description = "Search keyword", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "Incept")),
+    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Search suggestions retrieved successfully")
+    })
+    public ResponseEntity<List<SearchSuggestionResponse>> getSearchSuggestions(
+            @RequestParam String keyword) {
+        List<SearchSuggestionResponse> suggestions = movieService.getSearchSuggestions(keyword);
+        return ResponseEntity.ok(suggestions);
+    }
+
+    @GetMapping("/recent")
+    @Operation(summary = "Get recently released movies", description = "Retrieves movies released within the last N months", parameters = {
+            @Parameter(name = "months", description = "Number of months to look back", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "3")),
+            @Parameter(name = "page", description = "Page number (0-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0")),
+            @Parameter(name = "size", description = "Page size", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "20")),
+            @Parameter(name = "sort", description = "Sorting criteria in the format: field,asc or field,desc", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "releaseDate,desc"))
+    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Recently released movies retrieved successfully", content = @Content(schema = @Schema(implementation = Page.class)))
+    })
+    public ResponseEntity<Page<MovieSummaryResponse>> getRecentlyReleased(
+            @Parameter(description = "Number of months to look back", example = "3") @RequestParam(defaultValue = "3") int months,
+            @Parameter(hidden = true) Pageable pageable) {
+        Page<MovieSummaryResponse> movies = movieService.getRecentlyReleased(months, pageable);
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/trending")
+    @Operation(summary = "Get trending movies", description = "Retrieves movies sorted by popularity", parameters = {
+            @Parameter(name = "page", description = "Page number (0-based)", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0")),
+            @Parameter(name = "size", description = "Page size", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "20")),
+            @Parameter(name = "sort", description = "Sorting criteria in the format: field,asc or field,desc", in = ParameterIn.QUERY, schema = @Schema(type = "string", example = "popularity,desc"))
+    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Trending movies retrieved successfully", content = @Content(schema = @Schema(implementation = Page.class)))
+    })
+    public ResponseEntity<Page<MovieSummaryResponse>> getTrendingMovies(@Parameter(hidden = true) Pageable pageable) {
+        Page<MovieSummaryResponse> movies = movieService.getTrendingMovies(pageable);
         return ResponseEntity.ok(movies);
     }
 }
